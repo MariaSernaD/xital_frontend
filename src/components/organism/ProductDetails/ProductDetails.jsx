@@ -3,6 +3,7 @@ import { getProductById } from "../../../services/productsService";
 import { Link } from "react-router-dom";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import Badge from "../../atoms/Badge/Bagde";
+import ProductImageGallery from "../../molecules/ProductImageGallery/ProductImageGallery";
 
 export default function ProductDetails({ productId }) {
   const [product, setProduct] = useState(null);
@@ -109,7 +110,7 @@ export default function ProductDetails({ productId }) {
     <section className="product-details-container">
       {/*-Left gallery- */}
       <div className="product-image-container">
-        <img src={imageUrl} alt={name} className="product-image" />
+        <ProductImageGallery/>
       </div>
       {/*-Right details- */}
       <div className="product-details">

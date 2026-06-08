@@ -9,7 +9,7 @@ const apiClient = axios.create({
 //tipos de errores por si cae en alguno, si no señalar que es error del cliente
 function classifyError(error) {
   if(error.name === "CanceledError" || error.code === "ERR_CANCELED") { 
-    return { kind: "CANCELLED", original: error };
+    return { kind: "CANCELED", original: error };
   }
   if (error.response) {
     const status = error.response.status;
