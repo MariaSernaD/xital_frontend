@@ -108,26 +108,29 @@ export default function ProductDetails({ productId }) {
 
   return (
     <section className="product-details-container">
-      {/*-Left gallery- */}
-      <div className="product-image-container">
-        <ProductImageGallery/>
-      </div>
-      {/*-Right details- */}
-      <div className="product-details">
-        {/* category and tags row*/}
-        <div className="product-category">
-          <Badge text={category?.name ?? "Categoría no especificada"} variant="primary" />
-          <Badge text={volume} variant="primary" />
-          {product.stockLabel && (
-            <Badge text={stockLabel} variant={stockBadge} />
-          )}
+        {/*-Left gallery-*/}
+        <div className="product-image-container">
+          <ProductImageGallery />
         </div>
-        {/*-Title-*/}
-        <div className="product-title">
-          <h1>{name}</h1>
-          <p className="product-descripction">{description}</p>
+        {/*-Right details- */}
+        <div className="product-details">
+          {/* category and tags row*/}
+          <div className="product-category">
+            <Badge
+              text={category?.name ?? "Categoría no especificada"}
+              variant="primary"
+            />
+            <Badge text={volume} variant="primary" />
+            {product.stockLabel && (
+              <Badge text={stockLabel} variant={stockBadge} />
+            )}
+          </div>
+          {/*-Title-*/}
+          <div className="product-title">
+            <h1>{name}</h1>
+            <p className="product-descripction">{description}</p>
+          </div>
         </div>
-      </div>
     </section>
   );
 }
