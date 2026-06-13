@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import Badge from "../../atoms/Badge/Bagde";
 import ProductImageGallery from "../../molecules/ProductImageGallery/ProductImageGallery";
+import { Divider } from "../../atoms/Divider/Divider";
+import { Leaf, Droplets, ShoppingCart, Heart, Share2} from "lucide-react";
+import Button from "../../atoms/Button/Button";
 
 export default function ProductDetails({ productId }) {
   const [product, setProduct] = useState(null);
@@ -104,33 +107,98 @@ export default function ProductDetails({ productId }) {
     category,
   } = product;
   const stockBadge = stock > 0 ? "success" : "error";
-  const stockLabel = stock > 0 ? "En stock" : "Agotado";
+  const stockLabel = stock > 0 ? `En stock (${stock} unidades)` : "Agotado";
 
   return (
     <section className="product-details-container">
-        {/*-Left gallery-*/}
-        <div className="product-image-container">
-          <ProductImageGallery />
+      {/*-Left gallery-*/}
+      <div className="product-image-container">
+        <ProductImageGallery />
+      </div>
+      {/*-Right details- */}
+      <div className="product-details">
+        {/* category and tags row*/}
+        <div className="product-category">
+          <Badge
+            text={category?.name ?? "Categoría no especificada"}
+            variant="primary"
+          />
+          <Badge text={volume} variant="primary" />
+          {product.stockLabel && (
+            <Badge text={stockLabel} variant={stockBadge} />
+          )}
         </div>
-        {/*-Right details- */}
-        <div className="product-details">
-          {/* category and tags row*/}
-          <div className="product-category">
-            <Badge
-              text={category?.name ?? "Categoría no especificada"}
-              variant="primary"
-            />
-            <Badge text={volume} variant="primary" />
-            {product.stockLabel && (
-              <Badge text={stockLabel} variant={stockBadge} />
-            )}
+        {/*-Title-*/}
+        <div className="product-title">
+          <h1>{name}</h1>
+          <p className="product-descripction">{description}</p>
+        </div>
+
+        <Divider />
+
+        {/* Price */}
+        <div className="flex flex-col gap-1">
+          <p className="text-sm text-muted">Precio Unitario</p>
+          <p className="unitPrice">{unitPrice}</p>
+          <p className="text-xs text-muted">IVa incluido</p>
+        </div>
+
+        {/*Product meta chips */}
+        <div className="grid grid-col-2 gap-3">
+          <div className="flex itmes-center gap-2 ">
+            <Leaf className="text-primary" size={12} color="grey" />
+            <div className="flex flex-col">
+              <span className="text-xs text-muted">Hongo</span>
+              <span className="text-sm font-medium text-foreground">
+                {fungus}
+              </span>
+            </div>
           </div>
-          {/*-Title-*/}
-          <div className="product-title">
-            <h1>{name}</h1>
-            <p className="product-descripction">{description}</p>
+          <div className="flex itmes-center gap-2">
+            <Droplets className=" text-primary" size={12} color="grey" />
+            <div className="flex flex-col">
+              <span className="text-xs text-muted">Volumen</span>
+              <span className="text-sm font-medium text-foreground">
+                {volume}
+              </span>
+            </div>
           </div>
         </div>
+
+        {/*stock indicator */}
+        <div>
+          <p>{stockLabel}</p>
+        </div>
+
+        <Divider />
+
+        {/*actions*/}
+        <div className="flex gap-3">
+          <Button
+            variant="primary"
+            size="lg"
+            fullwidth
+            disabled={stock === 0}
+            onclick={() => alert("Producto agregado al carrito")}
+            className="gap-2"
+          >
+            <ShoppingCart /> Agregar al carrito
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => alert("Agregado a tu wishlist")}
+          >
+            <Heart />
+          </Button>
+          <Button variant="ghost" size="lg" >
+            <Share2/>
+          </Button>
+        </div>
+
+        <Divider />
+        
+      </div>
     </section>
   );
 }

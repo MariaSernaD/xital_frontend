@@ -1,0 +1,79 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column; /* Alinea la foto grande arriba y los thumbnails abajo */
+  gap: var(--space-md);   /* Espacio de 1rem entre la foto y las miniaturas */
+  width: 100%;
+  max-width: 500px;       /* Controla el ancho máximo para que no se deforme */
+}
+
+.gallery-main {
+  position: relative;     /* Permite posicionar las flechas encima de la imagen */
+  background-color: var(--color-bg-light); /* El fondo #F5F5F5 que querías */
+  border-radius: var(--radius-lg);        /* Bordes redondeados idénticos a tu foto */
+  overflow: hidden;                       /* Recorta la imagen para que respete el borde redondo */
+  aspect-ratio: 1 / 1;    /* Forza a que el contenedor sea un cuadrado perfecto (1:1) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Hace que la foto llene el espacio sin deformarse */
+}
+
+
+.gallery-btn {
+  position: absolute;     /* Flotan sobre la imagen */
+  top: 50%;
+  transform: translateY(-50%); /* Las centra verticalmente de forma perfecta */
+  background-color: rgba(255, 255, 255, 0.247); /* Fondo blanco semi-transparente */
+  color: var(--color-dark-elegant);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full); 
+  font-size: var(--text-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.4s ease;
+  z-index: 10;
+}
+
+.gallery-btn:hover {
+  background-color: rgba(255, 255, 255, 0.671); /* Se aclara al pasar el mouse */
+}
+
+/* Posiciones de las flechas */
+.gallery-btn--prev {
+  left: var(--space-md);
+}
+
+.gallery-btn--next {
+  right: var(--space-md);
+}
+
+
+.gallery-thumbs {
+  display: flex;
+  gap: var(--space-sm);  
+  justify-content: flex-start; 
+}
+
+/* Cada miniatura individual */
+.gallery-thumb {
+  width: 64px;            /* Tamaño ideal para las miniaturas en web */
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;    
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Miniatura seleccionada (Activa) */
+.gallery-thumb--active {
+  border-color: var(--color-dark-elegant); /* Pone el borde oscuro elegante que elegimos */
+  transform: scale(1.07);                  /* Crece un poquitito para notar cuál está activa */
+}

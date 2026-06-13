@@ -4,12 +4,11 @@
 
 :root {
   /* Colores */
-  --color-bg: #0D0A14;
-  --color-surface: #1A1424;
-  --color-surface-2: #221830;
-  --color-primary: #E8C5FF;
-  --color-primary-hover: #D4A8F0;
-  --color-text: #F5F5F5;
+--color-dark-elegant: #1A0A2E; 
+  --color-accent-lavender: #E8C5FF; 
+  --color-bg-light: #F5F5F5; 
+  --color-card-bg: #FFFFFF;
+  --text-primary: #1A1A1A;
   --color-text-muted: #9B8FA8;
   --color-success: #6BFFB8;
   --color-error: #FF6B6B;
