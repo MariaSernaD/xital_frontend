@@ -98,7 +98,7 @@ export default function ProductDetails({ productId }) {
     description,
     unitPrice,
     stock,
-    imageUrl,
+    imageURL,
     fungus,
     volume,
     category,
