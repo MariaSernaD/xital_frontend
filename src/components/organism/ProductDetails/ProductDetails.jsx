@@ -7,6 +7,7 @@ import ProductImageGallery from "../../molecules/ProductImageGallery/ProductImag
 import { Divider } from "../../atoms/Divider/Divider";
 import { Leaf, Droplets, ShoppingCart, Heart, Share2} from "lucide-react";
 import Button from "../../atoms/Button/Button";
+import "./ProductDetails.css";
 
 export default function ProductDetails({ productId }) {
   const [product, setProduct] = useState(null);
@@ -121,9 +122,9 @@ export default function ProductDetails({ productId }) {
         <div className="product-category">
           <Badge
             text={category?.name ?? "Categoría no especificada"}
-            variant="primary"
+            variant="primary" className="category-badge"
           />
-          <Badge text={volume} variant="primary" />
+          <Badge text={volume} variant="primary"  className="category-badge"/>
           {product.stockLabel && (
             <Badge text={stockLabel} variant={stockBadge} />
           )}
@@ -131,34 +132,34 @@ export default function ProductDetails({ productId }) {
         {/*-Title-*/}
         <div className="product-title">
           <h1>{name}</h1>
-          <p className="product-descripction">{description}</p>
+          <p className="product-description">{description}</p>
         </div>
 
         <Divider />
 
         {/* Price */}
-        <div className="flex flex-col gap-1">
-          <p className="text-sm text-muted">Precio Unitario</p>
-          <p className="unitPrice">{unitPrice}</p>
-          <p className="text-xs text-muted">IVa incluido</p>
+        <div className="product-price">
+          <p className="price-muted">Precio Unitario</p>
+          <p className="unitPrice">{`$${unitPrice.toFixed(2)}`}</p>
+          <p className="text-muted">IVA incluido</p>
         </div>
 
-        {/*Product meta chips */}
-        <div className="grid grid-col-2 gap-3">
-          <div className="flex itmes-center gap-2 ">
-            <Leaf className="text-primary" size={12} color="grey" />
-            <div className="flex flex-col">
-              <span className="text-xs text-muted">Hongo</span>
-              <span className="text-sm font-medium text-foreground">
+        {/*Product meta details */}
+        <div className="grid">
+          <div className="meta-container">
+            <Leaf className="leaf" size={12} color="grey" />
+            <div className="meta-fungus">
+              <span className="tags">Hongo</span>
+              <span className="meta-tags">
                 {fungus}
               </span>
             </div>
           </div>
-          <div className="flex itmes-center gap-2">
-            <Droplets className=" text-primary" size={12} color="grey" />
-            <div className="flex flex-col">
-              <span className="text-xs text-muted">Volumen</span>
-              <span className="text-sm font-medium text-foreground">
+          <div className="meta-container">
+            <Droplets className=" droplets" size={12} color="grey" />
+            <div className="meta-volume">
+              <span className="tags">Volumen</span>
+              <span className="meta-tags">
                 {volume}
               </span>
             </div>
@@ -166,20 +167,22 @@ export default function ProductDetails({ productId }) {
         </div>
 
         {/*stock indicator */}
-        <div>
-          <p>{stockLabel}</p>
+        <div className="stockBadge">
+          <p >
+            {stockLabel}
+          </p>
         </div>
 
         <Divider />
 
         {/*actions*/}
-        <div className="flex gap-3">
+        <div className="actions-container">
           <Button
             variant="primary"
             size="lg"
             fullwidth
             disabled={stock === 0}
-            onclick={() => alert("Producto agregado al carrito")}
+            onClick={() => alert("Producto agregado al carrito")}
             className="gap-2"
           >
             <ShoppingCart /> Agregar al carrito
