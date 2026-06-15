@@ -1,0 +1,75 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-main);
+  font-weight: 500;
+  border-radius: var(--radius-md); 
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+  background: none;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.btn-base {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-sm);
+}
+
+.btn-lg {
+  padding: 0.75rem var(--space-xl); 
+  font-size: var(--text-sm);
+  letter-spacing: 0.3px;
+}
+
+.btn-fullwidth {
+  flex: 1; 
+  width: 100%;
+}
+
+/* Botón Deshabilitado (Sin Stock) */
+.btn:disabled {
+  background-color: var(--color-bg-light) !important;
+  color: var(--color-text-muted) !important;
+  border-color: #E5E7EB !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-primary {
+  background-color: #0D0614; 
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2c1742; 
+  box-shadow: 0 0 0 3px rgba(232, 197, 255, 0.4); 
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: #E5E7EB; 
+  color: #0D0614;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--color-bg-light);
+  border-color: var(--color-border);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-muted);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--color-bg-light);
+  color: #0D0614;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}

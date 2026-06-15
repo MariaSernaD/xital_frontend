@@ -58,7 +58,7 @@
 .gap-3 {
   gap: var(--space-md);
 }
-.w-full {
+.widthfull {
   width: 100%;
 }
 

@@ -183,7 +183,6 @@ export default function ProductDetails({ productId }) {
             fullwidth
             disabled={stock === 0}
             onClick={() => alert("Producto agregado al carrito")}
-            className="gap-2"
           >
             <ShoppingCart /> Agregar al carrito
           </Button>

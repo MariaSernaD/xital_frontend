@@ -8,12 +8,14 @@ export default function Button({
   disabled = false,
   variant = "primary",
   size = "base",
+  fullwidth = false,
   className = "",
 }) {
   const buttonClasses = [
     "btn",
-    `tbn-${variant}`,
+    `btn-${variant}`,
     size !== "base" ? `btn-${size}` : "",
+    fullwidth ? "btn--fullwidth" : "",
     className,
   ]
 
