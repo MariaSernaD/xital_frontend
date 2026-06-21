@@ -1,82 +1,77 @@
 import { Link } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
 import Badge from "../../atoms/Badge/Bagde";
+import { ShoppingCart, Star } from "lucide-react";
+import "./ProductCard.css";
 
-
-export default function ProductCard({product}) {
-  const {
-    name,
-    description,
-    unitPrice,
-    stock,
-    imageURL,
-    fungus,
-    volume,
-    category,
-  } = product || {};
+export default function ProductCard({ product }) {
+  const { name, description, unitPrice, stock, imageURL, category } =
+    product || {};
 
   if (!product) {
     return (
-      <div
-        className="product-card"
-        style={{ padding: "24px", textAlign: "center" }}
-      > 
+      <div className="product-card product-card--empty">
         <p className="muted">
           Este producto no está disponible por el momento.
         </p>
       </div>
     );
   }
-  const stockBadge =
-    stock > 0
-      ? { text: "Disponible", variant: "success" }
-      : { text: "Agotado", variant: "error" };
+
   const productLink = `/products/${product._id}`;
 
   return (
-    <div className="principal-productCard">
-      <div className="product-cards-fondoColor">
-        <div className=" product-card">
-          <a href={productLink}>
-            <img
-              src={imageURL ? imageURL[0] : "/imagenes/BannerCarouselProducts/Melena de Leon/melena-1.png"}
-              alt={name}
-              className="product-card-image"
-            />
-          </a>
-          <div className="product-card-content">
-            <h3 className="product-card-title">
-              <a style={{ textDecoration: "none" }}>{name}</a>
-            </h3>
-            <p style={{ color: "grey" }}>
-              {description
-                ? description.length > 60
-                  ? `${description.substring(0, 60)}...`
-                  : description
-                : "Sin descripción"}
-            </p>
+    <div className="product-card">
+      {/* Contenedor de Imagen */}
+      <div className="product-card-image-wrapper">
+        <Link to={productLink}>
+          <img
+            src={
+              "/imagenes/xital.png"
+            }
+            alt={name}
+            className="product-card-image"
+          />
+        </Link>
+      </div>
+
+      {/* Contenido Informativo */}
+      <div className="product-card-content">
+        {/* Categoría */}
+        <span className="product-card-category">
+          {category?.name ?? "General"}
+        </span>
+
+        <h3 className="product-card-title">
+          <Link to={productLink}>{name}</Link>
+        </h3>
+
+        {/* Descripción breve (Texto más pequeño debajo del título) */}
+        <div className="product-card-rating">
+          <div className="rating-starts">
+            <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
+            <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
+            <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
+            <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
+            <Star size={14}  color="#0a0a0a" />
           </div>
-          <div className="product-card-actions">
-            <div className="product-card-price">${unitPrice}</div>
-            <div className="badge-product-card">
-              <Badge
-                className={!stock ? "Agotado" : "Disponible"}
-                text={stockBadge.text}
-                variant={stockBadge.variant}
-              >
-                {stock > 0 ? "Disponible" : "Agotado"}
-              </Badge>
-            </div>
-          </div>
-          <Button
-            variant="secondary"
-            size="sm"
-            className="btn-product-card"
-            disabled={stock === 0}
-          >
-            Agregar al carrito 🛒
-          </Button>
+          <span className="rating-number">4.8</span>
         </div>
+      </div>
+
+      {/* Footer: Precio y Botón */}
+      <div className="product-card-footer">
+        <div className="product-card-price">${unitPrice}.00</div>
+
+        <Button
+          variant="primary"
+          disabled={stock === 0}
+          onClick={() => alert("Producto agregado al carrito")}
+          className="product-card-quick-buy"
+          aria-label="Agregar al carrito"
+        >
+          <ShoppingCart size={18} />
+        </Button>
       </div>
     </div>
   );

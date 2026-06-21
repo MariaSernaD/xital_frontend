@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../../molecules/ProductCard/ProductCard";
 import Loading from "../../atoms/Loading/Loading";
+import Button from "../../atoms/Button/Button"; 
 import { getAllProducts } from "../../../services/productsService";
+import { FlaskConical, MousePointerClick } from "lucide-react";
+import "./ProductList.css"; 
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -14,8 +17,6 @@ export default function ProductList() {
         setLoading(true);
         setError(null);
         const data = await getAllProducts();
-        console.log("data que llega:", data);
-        console.log("es array?:", Array.isArray(data));
         setProducts(data);
       } catch (err) {
         setError(err.kind || "UNKNOWN");
@@ -28,16 +29,50 @@ export default function ProductList() {
 
   return (
     <div className="product-list-container">
-      <h4 className="product-list-title">Nuestras tinturas</h4>
-      {loading ? (
-        <Loading message="Cargando productos..." />
-      ) : (
-        <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
+      {/* Left column: general information */}
+      <div className="extract-info">
+        <h4 className="product-list-heading">Nuestras tinturas</h4>
+        
+        <div className="extract-info-content"> 
+          <div className="info-item">
+            <p >Eleva tu bienestar con extractos puros y biológicamente disponibles.</p>
+          </div>
+          
+          <div className="info-item">
+            <FlaskConical size={18} color="#0D0614" />
+            <p>Ultra concentrados 8:1 y 100% puros.</p>
+          </div>
+          
+          <div className="info-item">
+            <FlaskConical size={18} color="#0D0614" />
+            <p>Estandarizados y verificados por laboratorios independientes.</p>
+          </div>
+          
+          <div className="info-item">
+            <FlaskConical size={18} color="#0D0614" />
+            <p>Resultados reales: energía, claridad, sistema inmunitario y bienestar.</p>
+          </div>
         </div>
-      )}
+        
+        <div className="product-info-footer">
+          <Button variant="primary" aria-label="Ver más" className="product-info-button">
+             Ver más... <MousePointerClick size={16} color="#fff"  />
+          </Button>
+        </div>
+      </div>
+
+      {/*Rigth column: products */}
+      <div className="products-column">
+        {loading ? (
+          <Loading message="Cargando productos..." />
+        ) : (
+          <div className="product-grid">
+            {products.slice(0, 4).map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

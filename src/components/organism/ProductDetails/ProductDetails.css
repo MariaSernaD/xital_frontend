@@ -68,7 +68,7 @@
   color: var(--color-text-muted);
 }
 .unitPrice {
-    font-family: var(--font-main);
+  font-family: var(--font-main);
   font-size: var(--text-lg);
   color: #260a42;
   font-weight: 700;
@@ -81,39 +81,38 @@
 }
 
 .text-foreground {
-  color: #0D0614;
+  color: #0d0614;
 }
 
 /*product details*/
-.grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-    margin-bottom: var(--space-md);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
-.meta-container{
-    display:flex;
-    align-items: center;
-    gap: var(--space-sm);
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-lg);
-    padding: var(--space-sm) var(--space-md);
+.meta-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) var(--space-md);
 }
 
-
-.tags{
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-    color: var(--color-text-muted);
-    font-size: var(--text-xs);
+.tags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
 }
-.meta-tags{
-    font-size: var(--text-xs);
-    color: #0d0614de;
-    font-weight: 600;
+.meta-tags {
+  font-size: var(--text-xs);
+  color: #0d0614de;
+  font-weight: 600;
 }
 
 /*stock badge*/
@@ -135,14 +134,10 @@
 
 /*actions*/
 .actions-container {
-    display: grid;
-    grid-template-columns: 4fr auto auto;
-    gap: var(--space-sm);
-    width: 100%;
-    align-items: center;
-    margin-top: var(--space-sm);
+  display: grid;
+  grid-template-columns: 4fr auto auto;
+  gap: var(--space-sm);
+  width: 100%;
+  align-items: center;
+  margin-top: var(--space-sm);
 }
-
-
-
-

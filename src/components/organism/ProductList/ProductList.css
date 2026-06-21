@@ -1,0 +1,79 @@
+.product-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: var(--space-2xl) auto;
+  padding: 0 var(--space-md);
+}
+
+/* Responsive to computers and large displays */
+@media (min-content-width: 768px) or (min-width: 992px) {
+  .product-list-container {
+    display: grid;
+    grid-template-columns: 1.2fr 3fr; 
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+}
+
+/*Left-column, info extracts*/
+.extract-info {
+  background-color: #FFFFFF;
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid #E5E7EB;
+  position: sticky;
+  top: 20px;
+}
+
+.product-list-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-2xl);
+  color: #0D0614; 
+  margin-bottom: var(--space-lg);
+}
+
+.extract-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* icons rows with paragraphs */
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+.info-item svg {
+  flex-shrink: 0; /*se vuelve flexible si el contenedor padre cambia su tanaño*/
+  margin-top: 4px; /* Alinea perfectamente el ícono con la primera línea de texto */
+}
+
+.info-item p {
+  font-size: var(--text-sm);
+  color: #4A4A4A;
+  line-height: 1.5;
+}
+/*footer button of left column*/
+.product-info-footer {
+  margin-top: var(--space-xl);
+}
+.product-info-button{
+    font-weight: 100;
+    height: 40px;
+   
+}
+
+/*Rigth column: grid of product cards*/
+.products-column {
+  width: 100%;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  width: 100%;
+}

@@ -8,8 +8,8 @@
 
 .gallery-main {
   position: relative;     /* Permite posicionar las flechas encima de la imagen */
-  background-color: var(--color-bg-light); /* El fondo #F5F5F5 que querías */
-  border-radius: var(--radius-lg);        /* Bordes redondeados idénticos a tu foto */
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-lg);       
   overflow: hidden;                       /* Recorta la imagen para que respete el borde redondo */
   aspect-ratio: 1 / 1;    /* Forza a que el contenedor sea un cuadrado perfecto (1:1) */
   display: flex;
@@ -28,7 +28,7 @@
   position: absolute;     /* Flotan sobre la imagen */
   top: 50%;
   transform: translateY(-50%); /* Las centra verticalmente de forma perfecta */
-  background-color: rgba(255, 255, 255, 0.247); /* Fondo blanco semi-transparente */
+  background-color: rgba(255, 255, 255, 0.151); /* Fondo blanco semi-transparente */
   color: var(--color-dark-elegant);
   width: 40px;
   height: 40px;
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.5s ease;
   z-index: 10;
 }
 
