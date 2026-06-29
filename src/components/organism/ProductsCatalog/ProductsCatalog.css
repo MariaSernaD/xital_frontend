@@ -1,0 +1,24 @@
+.products-page-container {
+  max-width: 1200px;
+  margin: var(--space-2xl) auto;
+  padding: 0 var(--space-md);
+}
+
+.products-page-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.products-page-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-2xl);
+  color: #0D0614;
+}
+
+.catalog-grid {
+  display: grid;
+  /* Al tener toda la pantalla, creará filas completas de 3 o 4 productos 
+     según el tamaño del monitor, escalando las imágenes de forma preciosa */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-xl);
+}

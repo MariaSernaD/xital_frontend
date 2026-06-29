@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getProductById } from "../../../services/productsService";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import Badge from "../../atoms/Badge/Bagde";
 import ProductImageGallery from "../../molecules/ProductImageGallery/ProductImageGallery";
 import { Divider } from "../../atoms/Divider/Divider";
-import { Leaf, Droplets, ShoppingCart, Heart, Share2} from "lucide-react";
+import { Leaf, Droplets, ShoppingCart, Heart, Share2 } from "lucide-react";
 import Button from "../../atoms/Button/Button";
 import "./ProductDetails.css";
 
@@ -13,6 +13,8 @@ export default function ProductDetails({ productId }) {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -122,9 +124,10 @@ export default function ProductDetails({ productId }) {
         <div className="product-category">
           <Badge
             text={category?.name ?? "Categoría no especificada"}
-            variant="primary" className="category-badge"
+            variant="primary"
+            className="category-badge"
           />
-          <Badge text={volume} variant="primary"  className="category-badge"/>
+          <Badge text={volume} variant="primary" className="category-badge" />
           {product.stockLabel && (
             <Badge text={stockLabel} variant={stockBadge} />
           )}
@@ -150,27 +153,21 @@ export default function ProductDetails({ productId }) {
             <Leaf className="leaf" size={12} color="grey" />
             <div className="meta-fungus">
               <span className="tags">Hongo</span>
-              <span className="meta-tags">
-                {fungus}
-              </span>
+              <span className="meta-tags">{fungus}</span>
             </div>
           </div>
           <div className="meta-container">
             <Droplets className=" droplets" size={12} color="grey" />
             <div className="meta-volume">
               <span className="tags">Volumen</span>
-              <span className="meta-tags">
-                {volume}
-              </span>
+              <span className="meta-tags">{volume}</span>
             </div>
           </div>
         </div>
 
         {/*stock indicator */}
         <div className="stockBadge">
-          <p >
-            {stockLabel}
-          </p>
+          <p>{stockLabel}</p>
         </div>
 
         <Divider />
@@ -193,13 +190,21 @@ export default function ProductDetails({ productId }) {
           >
             <Heart />
           </Button>
-          <Button variant="ghost" size="lg" >
-            <Share2/>
+          <Button variant="ghost" size="lg">
+            <Share2 />
           </Button>
         </div>
 
         <Divider />
-        
+
+        <div className="back-container">
+          <Button variant="ghost" size="base" onClick={()=> navigate("/")}>
+            Volver al inicio
+          </Button>
+          <Button variant="ghost" size="base" onClick={()=> navigate("/products")}>
+            Regresar a productos
+          </Button>
+        </div>
       </div>
     </section>
   );
