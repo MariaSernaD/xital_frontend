@@ -11,7 +11,7 @@
 @media (min-content-width: 768px) or (min-width: 992px) {
   .product-list-container {
     display: grid;
-    grid-template-columns: 1.2fr 3fr; 
+    grid-template-columns: 1.2fr 3fr;
     gap: var(--space-2xl);
     align-items: start;
   }
@@ -19,18 +19,20 @@
 
 /*Left-column, info extracts*/
 .extract-info {
-  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
-  border: 1px solid #E5E7EB;
+  border: 1px solid #e5e7eb;
   position: sticky;
   top: 20px;
 }
 
 .product-list-heading {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: var(--text-2xl);
-  color: #0D0614; 
+  color: #0d0614;
   margin-bottom: var(--space-lg);
 }
 
@@ -53,17 +55,21 @@
 
 .info-item p {
   font-size: var(--text-sm);
-  color: #4A4A4A;
+  color: #4a4a4a;
   line-height: 1.5;
 }
 /*footer button of left column*/
 .product-info-footer {
-  margin-top: var(--space-xl);
+  margin-top: auto;
+  padding-top: var(--space-xl);
+  width: 100%;
 }
-.product-info-button{
-    font-weight: 100;
-    height: 40px;
-   
+.product-info-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  letter-spacing: 0.5px;
 }
 
 /*Rigth column: grid of product cards*/

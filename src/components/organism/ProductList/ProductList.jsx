@@ -11,7 +11,7 @@ export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,11 +66,13 @@ export default function ProductList() {
         <div className="product-info-footer">
           <Button
             variant="primary"
-            aria-label="Ver más"
+            size="lg" 
+            fullwidth 
+            aria-label="Explorar catálogo completo"
             className="product-info-button"
-            onClick={()=> navigate("/products")}
+            onClick={() => navigate("/products")}
           >
-            Ver más... <MousePointerClick size={16} color="#fff" />
+            Explorar catálogo <MousePointerClick size={18} />
           </Button>
         </div>
       </div>

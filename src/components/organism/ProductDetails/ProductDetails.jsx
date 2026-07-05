@@ -5,7 +5,14 @@ import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import Badge from "../../atoms/Badge/Bagde";
 import ProductImageGallery from "../../molecules/ProductImageGallery/ProductImageGallery";
 import { Divider } from "../../atoms/Divider/Divider";
-import { Leaf, Droplets, ShoppingCart, Heart, Share2 } from "lucide-react";
+import {
+  Leaf,
+  Droplets,
+  ShoppingCart,
+  Heart,
+  Share2,
+  ChevronLeft,
+} from "lucide-react";
 import Button from "../../atoms/Button/Button";
 import "./ProductDetails.css";
 
@@ -114,6 +121,21 @@ export default function ProductDetails({ productId }) {
 
   return (
     <section className="product-details-container">
+      <div className="product-details-layout">
+        <div className="back-container">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/products")}
+            style={{ color: "var(--color-text-muted)", paddingLeft: 0 }}
+          >
+            <ChevronLeft size={16} /> Volver al catálogo
+          </Button>
+        </div>
+      </div>
+
+      <Divider />
+
       {/*-Left gallery-*/}
       <div className="product-image-container">
         <ProductImageGallery />
@@ -192,17 +214,6 @@ export default function ProductDetails({ productId }) {
           </Button>
           <Button variant="ghost" size="lg">
             <Share2 />
-          </Button>
-        </div>
-
-        <Divider />
-
-        <div className="back-container">
-          <Button variant="ghost" size="base" onClick={()=> navigate("/")}>
-            Volver al inicio
-          </Button>
-          <Button variant="ghost" size="base" onClick={()=> navigate("/products")}>
-            Regresar a productos
           </Button>
         </div>
       </div>
