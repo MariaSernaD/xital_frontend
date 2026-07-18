@@ -3,6 +3,7 @@ import HeaderLayoutCarousel from "../../components/molecules/HeaderLayoutCarouse
 import Icon from "../../components/atoms/Icon/Icon";
 import { Link } from "react-router-dom";
 import logo from "../../../public/Xital_logo.png";
+import "./Header.css";
 
 export default function Header() {
   return (
@@ -10,19 +11,22 @@ export default function Header() {
       {/* Top header content */}
       <div className="header-top">
         <div className="header-flex">
-          <Mail />
-          <a href="mailto:info@xital.com">info@xital.com</a>
+          <div className="header-contact">
+            <Mail name="mail" size={16}/>
+            <a href="mailto:info@xital.com">info@xital.com</a>
+          </div>
+
           <HeaderLayoutCarousel />
           <div className="header-social">
             <div className="social-icons">
               <a href="#" aria-label="Facebook">
-                <Icon name="facebook" size={20} />
+                <Icon name="facebook" size={14} />
               </a>
               <a href="#" aria-label="Twitter">
-                <Icon name="twitter" size={20} />
+                <Icon name="twitter" size={14} />
               </a>
               <a href="#" aria-label="Instagram">
-                <Icon name="instagram" size={20} />
+                <Icon name="instagram" size={14} />
               </a>
             </div>
           </div>
@@ -45,7 +49,6 @@ export default function Header() {
         <div className="header-user-menu">
           <Link to="/login" className="btn-account">
             <Icon name="user" size={20} />
-            Account
           </Link>
           <Link
             to="/cart"

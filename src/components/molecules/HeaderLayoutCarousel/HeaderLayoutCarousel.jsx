@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import "./HeaderLayoutCarousel.css";
 
 const relevantInfo = [
   { texto: "¡Envio GRATIS en compras mayores a $2000 MXN!" },
-  { texto: "🍄‍🟫 15% DESCUENTO si te suscribes y compras ahora" },
-  { texto: "20% en la compra de 3 productos iguales" },
+  { texto: "🍄‍🟫 15% DESCUENTO si te suscribes y compras ahora mismo" },
+  { texto: "20% en la compra de 3 productos iguales ⚡" },
 ];
 export default function HeaderLayoutCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,11 +23,11 @@ export default function HeaderLayoutCarousel() {
   return (
     <div className="header-carousel">
       <button className="carousel-btn carousel-btn--prev" onClick={prev}>
-        &#8592;
+        <ChevronLeft size={16} />
       </button>
       <p>{relevantInfo[currentIndex].texto}</p>
       <button className="carousel-btn carousel-btn--next" onClick={next}>
-        &#8594;
+         <ChevronRight size={16} />
       </button>
     </div>
   );

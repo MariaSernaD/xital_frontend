@@ -1,0 +1,38 @@
+.header-carousel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header-carousel p {
+  /* La clave anti-brinco: ancho fijo + texto centrado */
+  width: 480px;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-accent-lavender);
+  margin: 0;
+  white-space: nowrap;      /* evita que un texto largo salte a 2 líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;  /* si algo no cabe, "..." en vez de romper el layout */
+}
+
+.carousel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  color: var(--color-accent-lavender);
+  font-size: var(--text-base);
+  line-height: 1;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(232, 197, 255, 0.15);  
+}
+
+.carousel-btn:active {
+  transform: scale(0.9);  
+}

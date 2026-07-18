@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./ProductImageGallery.css";
 
 const images = [
@@ -20,7 +21,7 @@ export default function ProductImageGallery() {
       {/* Imagen principal */}
       <div className="gallery-main">
         <button className="gallery-btn gallery-btn--prev" onClick={prev}>
-          &#8592;
+          <ChevronLeft size={16} />
         </button>
 
         <img
@@ -30,7 +31,7 @@ export default function ProductImageGallery() {
         />
 
         <button className="gallery-btn gallery-btn--next" onClick={next}>
-          &#8594;
+          <ChevronRight size={16} />
         </button>
       </div>
 
