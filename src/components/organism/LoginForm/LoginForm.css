@@ -1,0 +1,166 @@
+/* Página login, card centrada */
+.principal-container-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--color-bg-light);
+}
+
+/* White card */
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(26, 10, 46, 0.08); /* sombra suave tintada de morado */
+}
+
+.login-title {
+  font-family: "Playfair Display", serif;
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-dark-elegant);
+}
+
+/* Icono de usuario en círculo lavanda */
+.login-icon {
+  padding: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--color-dark-elegant);
+  background-color: var(--color-accent-lavender);
+  border-radius: var(--radius-full);
+}
+
+/* ===== Bloque usuarios de prueba — TEMPORAL, borrar al conectar Mongo ===== */
+.demo-users {
+  width: 100%;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-bg-light);
+  border: 1px dashed #d1c4e0;
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+}
+
+.demo-users h4 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.demo-users .users {
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+/* ===== fin bloque temporal ===== */
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.login-inputs {
+  width: 100%;
+}
+
+/* Botón ocupa todo el ancho */
+.btn-login {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-dark-elegant);
+  margin-top: var(--space-xs);
+}
+
+/* Mensaje de error */
+.login-error {
+  padding: var(--space-sm) var(--space-md);
+  background-color: rgba(255, 107, 107, 0.1);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+/* Checkbox "Recordarme" */
+.remember-account {
+  width: 100%;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+
+.remember-label .input-field {
+  width: auto;
+  accent-color: var(--color-dark-elegant); 
+  cursor: pointer;
+}
+
+/* footer card */
+.login-footer {
+  margin-top: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.span-login {
+  margin-top: var(--space-lg);
+}
+
+.span-login a {
+  color: var(--color-dark-elegant);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.span-login a:hover {
+  color: var(--color-dark-elegant);
+}
+
+.span-login-dos {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+
+}
+
+.span-login-dos a {
+  color: var(--color-dark-elegant);
+  font-weight: 300;
+  font-size: var(--text-xs);
+ 
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.login-footer-dos {
+  margin-top: var(--space-md);
+}
+
+.login-footer-dos a {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.login-footer-dos a:hover {
+  color: var(--color-dark-elegant);
+}

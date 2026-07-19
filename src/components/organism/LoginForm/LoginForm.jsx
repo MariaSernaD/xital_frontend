@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
 import Icon from "../../atoms/Icon/Icon";
+import "./LoginForm.css";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -24,7 +25,8 @@ export default function LoginForm() {
   return (
     <div className="principal-container-form">
       <div className="login-card">
-        <Icon name="user" size={60} className="login-icon"></Icon>
+        <h4 className="login-title">Mi Cuenta</h4>
+        <Icon name="user" size={50} className="login-icon"></Icon>
         <div className="demo-users">
           <h4>Usuarios de prueba:</h4>
           <div className="users">
@@ -77,13 +79,20 @@ export default function LoginForm() {
               />
               Recordarme
             </label>
+            <div className="login-footer">
+              <span className="span-login-dos">
+                ¿Olvidaste tu <a href="#">contraseña?</a>
+              </span>
+            </div>
           </div>
         </form>
+        {/* Enlace a registro — secundario, no compite con el botón principal */}
         <div className="login-footer">
           <span className="span-login">
-            ¿Olvidaste tu <a href="#">contraseña?</a>
+            ¿No tienes cuenta? <Link to="/registro">Regístrate</Link>
           </span>
         </div>
+
         <div className="login-footer-dos">
           <Link to="/">Volver al inicio</Link>
         </div>

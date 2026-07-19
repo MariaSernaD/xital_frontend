@@ -70,7 +70,7 @@
 }
 
 .header-logo img {
-  height: 120px;
+  height: 140px;
   width: auto;
   filter: brightness(0);
   object-fit: contain;
@@ -83,7 +83,7 @@
 .header-user-menu {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-sm);
 }
 
 .btn-account,
@@ -107,8 +107,8 @@
   position: absolute;
   top: -6px;
   right: -8px;
-  min-width: 18px;
-  height: 18px;
+  min-width: 15px;
+  height: 14px;
   padding: 0 5px;
   display: flex;
   align-items: center;

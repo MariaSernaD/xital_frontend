@@ -55,7 +55,7 @@ export default function Header() {
             className="carrito"
             aria-label="ver carrito de compras"
           >
-            <Icon name="shoppingCart" size={27} />
+            <Icon name="shoppingCart" size={20} />
             <span className="cart-badge-header"></span>
           </Link>
         </div>
