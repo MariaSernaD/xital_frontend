@@ -1,9 +1,11 @@
+import BannerHome from "../components/organism/BannerCarousel/BannerHome";
 import ProductList from "../components/organism/ProductList/ProductList";
 
 export default function Home() {
   return (
     <div>
-    <ProductList></ProductList>
+      <BannerHome />
+      <ProductList></ProductList>
     </div>
   );
 }

@@ -9,7 +9,7 @@
   gap: var(--space-lg);
   max-width: 1280px;
   margin: 0 auto;
-  color: var(--color-accent-lavender);
+  color: whitesmoke;
   font-size: var(--text-xs);
 }
 
@@ -43,7 +43,7 @@
 
 .header-social a {
   display: flex;
-  color: var(--color-accent-lavender);
+  color: whitesmoke;
   transition: opacity 0.2s ease;
 }
 

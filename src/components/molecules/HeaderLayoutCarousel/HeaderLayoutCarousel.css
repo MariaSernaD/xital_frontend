@@ -9,7 +9,7 @@
   width: 480px;
   text-align: center;
   font-size: var(--text-sm);
-  color: var(--color-accent-lavender);
+  color: whitesmoke;
   margin: 0;
   white-space: nowrap;      /* evita que un texto largo salte a 2 líneas */
   overflow: hidden;

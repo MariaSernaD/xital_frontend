@@ -4,6 +4,7 @@ import Product from "../../pages/Product";
 import ProductsPage from "../../pages/ProductsPage";
 import Login from "../../pages/Login";
 import Layout from "../../layout/Layout";
+import Register from "../../pages/Register";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:productId" element={<Product />} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
       </Layout>
     </BrowserRouter>

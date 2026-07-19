@@ -25,7 +25,7 @@ export default function LoginForm() {
   return (
     <div className="principal-container-form">
       <div className="login-card">
-        <h4 className="login-title">Mi Cuenta</h4>
+        <h2 className="login-title">Mi Cuenta</h2>
         <Icon name="user" size={50} className="login-icon"></Icon>
         <div className="demo-users">
           <h4>Usuarios de prueba:</h4>
