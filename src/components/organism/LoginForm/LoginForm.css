@@ -114,7 +114,7 @@
 
 /* footer card */
 .login-footer {
-  margin-top: var(--space-xs);
+  margin-top: var(--space-lg);
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
@@ -132,7 +132,7 @@
 }
 
 .span-login a:hover {
-  color: var(--color-dark-elegant);
+  color: var(--color-dark-elegant-hover);
 }
 
 .span-login-dos {
@@ -162,5 +162,5 @@
 }
 
 .login-footer-dos a:hover {
-  color: var(--color-dark-elegant);
+  color: var(--color-dark-elegant-hover);
 }

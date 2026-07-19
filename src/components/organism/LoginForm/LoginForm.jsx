@@ -79,17 +79,17 @@ export default function LoginForm() {
               />
               Recordarme
             </label>
-            <div className="login-footer">
+            {/*<div className="login-footer">
               <span className="span-login-dos">
                 ¿Olvidaste tu <a href="#">contraseña?</a>
               </span>
-            </div>
+            </div>*/}
           </div>
         </form>
         {/* Enlace a registro — secundario, no compite con el botón principal */}
         <div className="login-footer">
           <span className="span-login">
-            ¿No tienes cuenta? <Link to="/registro">Regístrate</Link>
+            ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
           </span>
         </div>
 

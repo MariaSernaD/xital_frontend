@@ -1,0 +1,89 @@
+/*Página del register, card centrada*/
+.principal-register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--color-bg-light);
+}
+
+/* White card */
+.register-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(26, 10, 46, 0.08);
+}
+
+.register-title {
+  font-family: "Playfair Display", serif;
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-dark-elegant);
+}
+
+/* Reusa el círculo lavanda — mismo estilo que login-icon */
+.register-icon {
+  padding: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--color-dark-elegant);
+  background-color: var(--color-accent-lavender);
+  border-radius: var(--radius-full);
+}
+
+/* ===== El formulario ===== */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.form-inputs {
+  width: 100%;
+}
+
+/* ===== Errores por campo (validación de cliente) ===== */
+.field-errors {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-error);
+  font-size: var(--text-xs);
+}
+
+.register-form .btn {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-dark-elegant);
+  margin-top: var(--space-xs);
+}
+
+/* ===== Pie: enlace a login ===== */
+.register-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.register-footer a {
+  color: var(--color-dark-elegant);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.register-footer a:hover {
+  color: var(--color-dark-elegant-hover); 
+ 
+}
