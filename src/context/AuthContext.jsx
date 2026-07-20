@@ -1,5 +1,12 @@
-import { useContext, useState } from "react";
-import { getToken, saveToken, clearToken, decodeToken, isTokenExpired } from "../utils/auth";
+import { createContext, useContext, useState, useEffect } from "react";
+import { login as loginService } from "../services/authService";
+import {
+  getToken,
+  saveToken,
+  clearToken,
+  decodeToken,
+  isTokenExpired,
+} from "../utils/auth";
 
 const AuthContext = createContext(null);
 
@@ -14,7 +21,8 @@ export function AuthProvider({ children }) {
       return;
     }
 
-    if (isTokenExpired) {
+    if (isTokenExpired(token)) {
+      clearToken();
       setLoading(false);
       return;
     }
@@ -51,9 +59,9 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  const value = {user, isAuthenticated : !!user, loading, login, logout};
+  const value = { user, isAuthenticated: !!user, loading, login, logout };
 
-  return <AuthContext.Provider value= {value}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 export function useAuth() {
   const ctx = useContext(AuthContext);
