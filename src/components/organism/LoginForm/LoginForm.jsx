@@ -1,25 +1,51 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
 import Icon from "../../atoms/Icon/Icon";
+import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
+import RegisterErrorMessage from "../../molecules/RegisterErrorMessage/RegisterErrorMessage";
 import "./LoginForm.css";
 
 export default function LoginForm() {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
+  const [errorKind, setErrorKind] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formt-data");
     setLoading(true);
-    setError("");
+    setErrorKind(null);
+    setErrorMessage("");
+    try {
+      await login({ email, password });
+      navigate("/");
+    } catch (error) {
+      handleLoginError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLoginError = (err) => {
+    const kind = err.kind || "UNKNOWN";
+    if (kind === "CLIENT_ERROR" && err.status === 400) {
+      const msg = err.original?.response?.data?.message;
+      setErrorMessage(
+        msg === "Invalid Credentials"
+          ? "Email o contraseña incorrectos."
+          : "Usuario no registrado. ¿Quieres crear una cuenta?",
+      );
+      return;
+    }
+    setErrorKind(kind);
   };
 
   return (
@@ -60,7 +86,9 @@ export default function LoginForm() {
               required
             />
           </div>
-          {error && <p className="login-error">{error}</p>}
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+          {errorKind && <RegisterErrorMessage kind={errorKind} />}
+
           <Button
             className="btn-login"
             disabled={loading}

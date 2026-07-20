@@ -5,7 +5,7 @@ import ProductsPage from "../../pages/ProductsPage";
 import Login from "../../pages/Login";
 import Layout from "../../layout/Layout";
 import Register from "../../pages/Register";
-import { AuthProvider } from "../../context/authContext";
+import { AuthProvider } from "../../context/AuthContext";
 
 export default function App() {
   return (

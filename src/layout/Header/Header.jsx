@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 import HeaderLayoutCarousel from "../../components/molecules/HeaderLayoutCarousel/HeaderLayoutCarousel";
 import Icon from "../../components/atoms/Icon/Icon";
 import { Link } from "react-router-dom";
-import logo from "../../../public/Xital_logo.png";
+import logo from "/Xital_logo.png";
 import "./Header.css";
 
 export default function Header() {
