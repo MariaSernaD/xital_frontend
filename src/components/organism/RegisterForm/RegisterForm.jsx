@@ -96,7 +96,7 @@ export default function RegisterForm() {
 
     if (kind === "CLIENT_ERROR" && err.status === 400) {
       const backendMessage = err.original?.response?.data?.message;
-      if (backendMessage === "User already exist") {
+      if (backendMessage === "User already exists") {
         setErrorFields({ email: "Este email ya está registrado" });
         return;
       }
