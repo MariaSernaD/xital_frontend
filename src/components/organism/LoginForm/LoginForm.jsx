@@ -53,15 +53,6 @@ export default function LoginForm() {
       <div className="login-card">
         <h2 className="login-title">Mi Cuenta</h2>
         <Icon name="user" size={50} className="login-icon"></Icon>
-        <div className="demo-users">
-          <h4>Usuarios de prueba:</h4>
-          <div className="users">
-            <strong>Cliente: </strong>cliente@email.com / cliente123
-          </div>
-          <div className="users">
-            <strong>Admin: </strong>admin@email.com / admin456
-          </div>
-        </div>
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-inputs">

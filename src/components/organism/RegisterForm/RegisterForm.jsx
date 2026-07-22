@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { register } from "../../../services/authService";
 import Input from "../../atoms/Input/Input";
 import Icon from "../../atoms/Icon/Icon";
 import RegisterErrorMessage from "../../molecules/RegisterErrorMessage/RegisterErrorMessage";
@@ -17,7 +18,7 @@ export default function RegisterForm() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [errorKind, setErrorKind] = useState("");
+  const [errorKind, setErrorKind] = useState(null);
   const [errorFields, setErrorFields] = useState({});
 
   const handleChange = (field) => (event) => {
@@ -62,7 +63,7 @@ export default function RegisterForm() {
     return errors;
   };
 
-  const onSubmit = (event) => {          // quita el async por ahora
+  const onSubmit =  async (event) => {          
   event.preventDefault();
 
   const errors = validate(form);
@@ -73,13 +74,9 @@ export default function RegisterForm() {
   }
 
   setErrorFields({});
-  setErrorKind(null);
+  setErrorKind(null)
+   setLoading(true);
 
-  // FASE B: aquí irá el register() del context
-  console.log("Datos válidos, listos para enviar:", form);
-
-  /* --- PAUSADO HASTA FASE B ---
-  setLoading(true);
   try {
     await register({ name: form.name, email: form.email, password: form.password });
     navigate("/login", { state: { justRegistered: true, email: form.email } });
@@ -88,7 +85,7 @@ export default function RegisterForm() {
   } finally {
     setLoading(false);
   }
-  */
+  
 };
 
   const handleRegisterError = (err) => {

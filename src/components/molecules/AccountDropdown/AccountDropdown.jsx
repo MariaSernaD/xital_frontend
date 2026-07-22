@@ -96,7 +96,7 @@ export default function AccountDropdown() {
                   : "Hola, Inicia sesión"}
               </span>
               <span className="account-text">
-                {isAuthenticated ? "Mi Cuenta" : "Cuenta y Listas"}
+                {isAuthenticated ? "Mi Cuenta" : "Ingresa a tu cuenta"}
               </span>
             </div>
             <Icon

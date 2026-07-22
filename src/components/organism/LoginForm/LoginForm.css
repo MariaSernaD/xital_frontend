@@ -38,29 +38,6 @@
   border-radius: var(--radius-full);
 }
 
-/* ===== Bloque usuarios de prueba — TEMPORAL, borrar al conectar Mongo ===== */
-.demo-users {
-  width: 100%;
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md);
-  background-color: var(--color-bg-light);
-  border: 1px dashed #d1c4e0;
-  border-radius: var(--radius-md);
-  font-size: var(--text-xs);
-}
-
-.demo-users h4 {
-  margin-bottom: var(--space-sm);
-  color: var(--color-text-muted);
-  font-weight: 600;
-}
-
-.demo-users .users {
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-/* ===== fin bloque temporal ===== */
-
 /* Formulario */
 .login-form {
   display: flex;

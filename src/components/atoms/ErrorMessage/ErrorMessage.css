@@ -1,9 +1,13 @@
 .error-message {
-  text-align: center;
-  padding: var(--gap-xl, 48px);
-  background: var(--surface);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  color: var(--danger, #e53e3e);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  font-size: var(--text-sm);
   font-weight: 500;
+  line-height: 1.4;
 }
