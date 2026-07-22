@@ -3,6 +3,7 @@ import HeaderLayoutCarousel from "../../components/molecules/HeaderLayoutCarouse
 import Icon from "../../components/atoms/Icon/Icon";
 import { Link } from "react-router-dom";
 import logo from "/Xital_logo.png";
+import AccountDropdown from "../../components/molecules/AccountDropdown/AccountDropdown";
 import "./Header.css";
 
 export default function Header() {
@@ -12,7 +13,7 @@ export default function Header() {
       <div className="header-top">
         <div className="header-flex">
           <div className="header-contact">
-            <Mail name="mail" size={16}/>
+            <Mail size={16}/>
             <a href="mailto:info@xital.com">info@xital.com</a>
           </div>
 
@@ -47,9 +48,7 @@ export default function Header() {
 
         {/*User menu*/}
         <div className="header-user-menu">
-          <Link to="/login" className="btn-account">
-            <Icon name="user" size={20} />
-          </Link>
+          <AccountDropdown/>
           <Link
             to="/cart"
             className="carrito"
