@@ -7,19 +7,16 @@ const getCarts = async () => {
 };
 
 //GET /cart/user  →  solo el carrito por usuario
+// message: "Tu carrito está vacío aún, explora nuestras tinturas", esto irá acorde a la function  del useCart : isCartEmpty y mostrara un cart-empty-container en la página del DisplayCart, así que no será necesario colocar un msg aquí.
 const getCartByUser = async (products) => {
   try {
     const response = await apiClient.get("/cart/user");
-    const errorStatus = error.response.status;
-    if (errorStatus === 404 || "NOT FOUND") {
-      return { products: [] };
-      // message: "Tu carrito está vacío aún, explora nuestras tinturas", esto irá acorde a la function  del useCart : isCartEmpty y mostrara un cart-empty-container en la página del DisplayCart, así que no será necesario colocar un msg aquí.
-    }
-  } catch (error) {
-    console.log(error);
-  }
-  if (!errorStatus) {
     return response.data;
+  }catch (error){
+    if(error.kind === "NOT FOUND"){
+      return {products: []};
+    }
+    throw error;
   }
 };
 
@@ -42,7 +39,7 @@ const updateCart = async (productId, quantity) => {
 };
 
 //DELETE /cart/product/:productId →  elimina producto del carrito
-const deleteProductFromCart = async ({ productId }) => {
+const deleteProductFromCart = async ( productId ) => {
   const response = await apiClient.delete(`/cart/product/${productId}`);
   return response.data;
 };
