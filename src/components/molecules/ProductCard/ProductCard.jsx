@@ -3,8 +3,10 @@ import Button from "../../atoms/Button/Button";
 import Badge from "../../atoms/Badge/Bagde";
 import { ShoppingCart, Star } from "lucide-react";
 import "./ProductCard.css";
+import { useCart } from "../../../context/cartContext";
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart();
   const { name, description, unitPrice, stock, imageURL, category } =
     product || {};
 
@@ -18,6 +20,7 @@ export default function ProductCard({ product }) {
     );
   }
 
+  const handleAddToCart = () => addToCart(product._id, 1);
   const productLink = `/products/${product._id}`;
 
   return (
@@ -26,9 +29,7 @@ export default function ProductCard({ product }) {
       <div className="product-card-image-wrapper">
         <Link to={productLink}>
           <img
-            src={
-              "/imagenes/xital.png"
-            }
+            src={"/imagenes/xital.png"}
             alt={name}
             className="product-card-image"
           />
@@ -53,7 +54,7 @@ export default function ProductCard({ product }) {
             <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
             <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
             <Star size={14} fill="#0a0a0a" color="#0a0a0a" />
-            <Star size={14}  color="#0a0a0a" />
+            <Star size={14} color="#0a0a0a" />
           </div>
           <span className="rating-number">4.8</span>
         </div>
@@ -66,7 +67,7 @@ export default function ProductCard({ product }) {
         <Button
           variant="primary"
           disabled={stock === 0}
-          onClick={() => alert("Producto agregado al carrito")}
+          onClick={handleAddToCart}
           className="product-card-quick-buy"
           aria-label="Agregar al carrito"
         >

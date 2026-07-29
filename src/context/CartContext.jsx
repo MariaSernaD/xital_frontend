@@ -1,6 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
-import { clearCart, getCartByUser } from "../services/cartService";
+import {
+  addProductToCart,
+  clearCart,
+  deleteProductFromCart,
+  getCartByUser,
+  updateCart,
+} from "../services/cartService";
 
 const CartContext = createContext();
 
@@ -47,6 +53,36 @@ export function CartProvider({ children }) {
     }
   };
 
+  const addToCart = async (productId, quantity) => {
+    if (!isAuthenticated) return;
+    try {
+      const addingProduct = await addProductToCart(productId, quantity);
+      setCart(addingProduct);
+    } catch (error) {
+      setError(error.kind ?? "SERVER_ERROR");
+    }
+  };
+
+  const updateQuantity = async (productId, quantity) => {
+    if (!isAuthenticated) return;
+    try {
+      const updatingQuantity = await updateCart(productId, quantity);
+      setCart(updatingQuantity);
+    } catch (error) {
+      setError(error.kind ?? "SERVER_ERROR");
+    }
+  };
+
+  const removeProduct = async (productId) => {
+    if (!isAuthenticated) return;
+    try {
+      const removingProduct = await deleteProductFromCart(productId);
+      setCart(removingProduct);
+    } catch (error) {
+      setError(error.kind ?? "SERVER_ERROR");
+    }
+  };
+
   const totalItems =
     cart?.products?.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
   const totalPrice =
@@ -56,7 +92,18 @@ export function CartProvider({ children }) {
     ) ?? 0;
   const isCartEmpty = !cart?.products?.length;
 
-  const value = { cart, loading, error, emptyCart, totalItems, totalPrice, isCartEmpty };
+  const value = {
+    cart,
+    loading,
+    error,
+    emptyCart,
+    addToCart,
+    updateQuantity,
+    removeProduct,
+    totalItems,
+    totalPrice,
+    isCartEmpty,
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 

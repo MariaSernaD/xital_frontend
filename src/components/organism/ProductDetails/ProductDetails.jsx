@@ -15,8 +15,11 @@ import {
 } from "lucide-react";
 import Button from "../../atoms/Button/Button";
 import "./ProductDetails.css";
+import { useCart } from "../../../context/cartContext";
 
 export default function ProductDetails({ productId }) {
+
+  const {addToCart}= useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -49,6 +52,10 @@ export default function ProductDetails({ productId }) {
     };
   }, [productId]);
 
+  const handleAddToCart = ()=>{
+    if (product) addToCart(product._id, 1);
+  };
+
   if (loading) return <ProductDetailSkeleton />;
   //Errores
   //1.Producto no encontrado
@@ -67,7 +74,7 @@ export default function ProductDetails({ productId }) {
   }
 
   //2.Error en la conexión con el servidor
-  if (error === "NETWORK" || error === "TIMEOUT") {
+  if (error === "NETWORK_ERROR" || error === "TIMEOUT") {
     return (
       <div className="product-details-container">
         <ErrorMessage message={error}>
@@ -82,7 +89,7 @@ export default function ProductDetails({ productId }) {
   }
 
   //3. Error del servidor
-  if (error === "SERVER") {
+  if (error === "SERVER_ERROR") {
     return (
       <div className="product-details-container">
         <ErrorMessage message={error}>
@@ -201,14 +208,14 @@ export default function ProductDetails({ productId }) {
             size="lg"
             fullwidth
             disabled={stock === 0}
-            onClick={() => alert("Producto agregado al carrito")}
+            onClick={handleAddToCart}
           >
             <ShoppingCart /> Agregar al carrito
           </Button>
           <Button
             variant="outline"
             size="lg"
-            onClick={() => alert("Agregado a tu wishlist")}
+            onClick={()=>"Tintura agregada a favoritos"}
           >
             <Heart />
           </Button>
