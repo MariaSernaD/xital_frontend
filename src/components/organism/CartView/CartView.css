@@ -1,0 +1,127 @@
+/* ===== Contenedor de la vista del carrito ===== */
+.cart-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+
+/* ===== Cada item: 3 columnas ===== */
+.cart-view-products {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-card-bg);
+  border-bottom: 1px solid #eee;   /* separador tipo Amazon, sin caja */
+  border-radius: var(--radius-lg);
+}
+
+/* Columna 1: imagen */
+.cart-view-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-light);
+}
+
+/* Columna 2: info */
+.cart-view-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.cart-view-details h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cart-view-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.cart-view-tags span {
+  padding: 2px 8px;
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-full);
+}
+
+/* Acciones: cantidad + eliminar en fila */
+.cart-view-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.multiple-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-full);
+  padding: 2px;
+}
+
+.btn-cart-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-light);
+  color: var(--color-dark-elegant);
+}
+
+.btn-cart-view:hover {
+  background-color: var(--color-accent-lavender);
+}
+
+.quantity-number {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+/* Eliminar — con especificidad para ganarle al btn-ghost */
+.remove-item.btn-ghost {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.remove-item.btn-ghost:hover:not(:disabled) {
+  color: var(--color-error);   /* ahora sí gana el rojo */
+}
+
+/* Columna 3: precios, alineados a la derecha */
+.cart-view-prices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.unit-price {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.line-total {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-dark-elegant);
+}

@@ -3,10 +3,11 @@ import { useCart } from "../context/cartContext";
 import Button from "../components/atoms/Button/Button";
 import Icon from "../components/atoms/Icon/Icon";
 import { MousePointerClick } from "lucide-react";
+import CartView from "../components/organism/CartView/CartView";
 import "./Cart.css";
 
 export default function Cart() {
-  const { isCartEmpty } = useCart();
+  const { isCartEmpty, totalItems, totalPrice } = useCart();
   const navigate = useNavigate();
 
   if (isCartEmpty) {
@@ -30,9 +31,40 @@ export default function Cart() {
   }
 
   return (
-    <div className="cart-container">
-      <h1>Tu carrito</h1>
-      <div>Aqui van los productos del carrito</div>
+    <div className="cart-page">
+      <div className="cart-page-header">
+        <h1 className="cart-page-title"><Icon name= "cart" size={25}/>Tu carrito</h1>
+        <p className="cart-page-subtitle">
+          Revisa la compra de tus tinturas <span>{totalItems} unidades</span>
+        </p>
+      </div>
+
+      <div className="cart-layout">
+        {/* Columna izquierda: los productos */}
+        <div className="cart-list-column">
+          <CartView />
+        </div>
+
+        {/* Columna derecha: resumen sticky */}
+        <aside className="cart-summary">
+          <div className="cart-total">
+            <span className="cart-total-subtitle">Total a pagar</span>
+            <h3 className="cart-total-amount">${totalPrice.toFixed(2)}</h3>
+          </div>
+          <Button
+            onClick={() => navigate("/checkout")}
+            disabled={isCartEmpty}
+            className="btn-cartDisplay-pay"
+            variant="primary"
+          >
+            <Icon name="creditCard" size={18} />
+            <span>Proceder al pago</span>
+            <span className="cart-items-count">
+              {totalItems} {totalItems === 1 ? "producto" : "productos"}
+            </span>
+          </Button>
+        </aside>
+      </div>
     </div>
   );
 }
