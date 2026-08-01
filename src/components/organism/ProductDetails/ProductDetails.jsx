@@ -14,12 +14,14 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import Button from "../../atoms/Button/Button";
-import "./ProductDetails.css";
 import { useCart } from "../../../context/cartContext";
+import { useAuth } from "../../../context/AuthContext";
+import "./ProductDetails.css";
 
 export default function ProductDetails({ productId }) {
+  const { addToCart } = useCart();
+  const { isAuthenticated } = useAuth();
 
-  const {addToCart}= useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -52,8 +54,12 @@ export default function ProductDetails({ productId }) {
     };
   }, [productId]);
 
-  const handleAddToCart = ()=>{
-    if (product) addToCart(product._id, 1);
+  const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      navigate("/login", { state: { from: location.pathname } });
+      return;
+    }
+    addToCart(product._id, 1);
   };
 
   if (loading) return <ProductDetailSkeleton />;
@@ -215,7 +221,7 @@ export default function ProductDetails({ productId }) {
           <Button
             variant="outline"
             size="lg"
-            onClick={()=>"Tintura agregada a favoritos"}
+            onClick={() => "Tintura agregada a favoritos"}
           >
             <Heart />
           </Button>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
@@ -11,6 +11,9 @@ import "./LoginForm.css";
 export default function LoginForm() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +29,7 @@ export default function LoginForm() {
     setErrorMessage("");
     try {
       await login({ email, password });
-      navigate("/");
+      navigate(from);
     } catch (error) {
       handleLoginError(error);
     } finally {

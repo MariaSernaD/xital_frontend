@@ -44,6 +44,13 @@
   flex-grow: 1; /* Empuja el footer al fondo si los títulos varían en largo */
 }
 
+.product-card-category-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 .product-card-category {
   font-size: var(--text-xs);
   color: var(--color-text-muted); 

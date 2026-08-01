@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../atoms/Button/Button";
 import Badge from "../../atoms/Badge/Bagde";
 import { ShoppingCart, Star } from "lucide-react";
 import "./ProductCard.css";
 import { useCart } from "../../../context/cartContext";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
-  const { name, description, unitPrice, stock, imageURL, category } =
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  const { name, description, unitPrice, stock, imageURL, category, volume } =
     product || {};
 
   if (!product) {
@@ -20,7 +24,14 @@ export default function ProductCard({ product }) {
     );
   }
 
-  const handleAddToCart = () => addToCart(product._id, 1);
+  const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      navigate("/login", { state: { from: location.pathname } });
+      return;
+    }
+    addToCart(product._id, 1);
+  };
+
   const productLink = `/products/${product._id}`;
 
   return (
@@ -39,9 +50,12 @@ export default function ProductCard({ product }) {
       {/* Contenido Informativo */}
       <div className="product-card-content">
         {/* Categoría */}
-        <span className="product-card-category">
-          {category?.name ?? "General"}
-        </span>
+        <div className= "product-card-category-row">
+          <span className="product-card-category">
+            {category?.name ?? "General"}
+          </span>
+          <span className="product-card-category">{volume}</span>
+        </div>
 
         <h3 className="product-card-title">
           <Link to={productLink}>{name}</Link>
