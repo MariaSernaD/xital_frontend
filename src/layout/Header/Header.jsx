@@ -4,16 +4,19 @@ import Icon from "../../components/atoms/Icon/Icon";
 import { Link } from "react-router-dom";
 import logo from "/Xital_logo.png";
 import AccountDropdown from "../../components/molecules/AccountDropdown/AccountDropdown";
+import { useCart } from "../../context/cartContext";
+
 import "./Header.css";
 
 export default function Header() {
+  const { totalItems } = useCart();
   return (
     <header className="header-main">
       {/* Top header content */}
       <div className="header-top">
         <div className="header-flex">
           <div className="header-contact">
-            <Mail size={16}/>
+            <Mail size={16} />
             <a href="mailto:info@xital.com">info@xital.com</a>
           </div>
 
@@ -48,14 +51,16 @@ export default function Header() {
 
         {/*User menu*/}
         <div className="header-user-menu">
-          <AccountDropdown/>
+          <AccountDropdown />
           <Link
             to="/cart"
             className="carrito"
             aria-label="ver carrito de compras"
           >
             <Icon name="shoppingCart" size={20} />
-            <span className="cart-badge-header"></span>
+            {totalItems > 0 && (
+              <span className="cart-badge-header">{totalItems}</span>
+            )}
           </Link>
         </div>
       </div>

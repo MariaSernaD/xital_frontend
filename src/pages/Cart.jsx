@@ -35,7 +35,7 @@ export default function Cart() {
       <div className="cart-page-header">
         <h1 className="cart-page-title"><Icon name= "cart" size={25}/>Tu carrito</h1>
         <p className="cart-page-subtitle">
-          Revisa la compra de tus tinturas <span>{totalItems} unidades</span>
+          Revisa la compra de tus tinturas <span>{totalItems} {totalItems === 1 ? "unidad" : "unidades"}</span>
         </p>
       </div>
 

@@ -1,4 +1,4 @@
-/* ===== Contenedor de la vista del carrito ===== */
+/* Contenedor de la vista del carrito  */
 .cart-view-container {
   display: flex;
   flex-direction: column;
@@ -7,14 +7,14 @@
 }
 
 
-/* ===== Cada item: 3 columnas ===== */
+/*  Cada item: 3 columnas */
 .cart-view-products {
   display: grid;
   grid-template-columns: 100px 1fr auto;
   gap: var(--space-lg);
   padding: var(--space-md);
   background-color: var(--color-card-bg);
-  border-bottom: 1px solid #eee;   /* separador tipo Amazon, sin caja */
+  border-bottom: 1px solid #eee;
   border-radius: var(--radius-lg);
 }
 
@@ -25,8 +25,14 @@
   object-fit: cover;
   border-radius: var(--radius-md);
   background-color: var(--color-bg-light);
+
 }
 
+.cart-view-image img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+
+}
 /* Columna 2: info */
 .cart-view-details {
   display: flex;
@@ -94,7 +100,6 @@
   font-size: var(--text-sm);
 }
 
-/* Eliminar — con especificidad para ganarle al btn-ghost */
 .remove-item.btn-ghost {
   display: flex;
   align-items: center;
@@ -104,7 +109,7 @@
 }
 
 .remove-item.btn-ghost:hover:not(:disabled) {
-  color: var(--color-error);   /* ahora sí gana el rojo */
+  color: var(--color-error);   
 }
 
 /* Columna 3: precios, alineados a la derecha */
