@@ -43,6 +43,7 @@ export default function useAddresses() {
   };
 
   const updatingAddress = async (id, data) => {
+    // cambios en el address
     try {
        await updateAddress(id, data);
       await loadAddresses();
@@ -61,8 +62,3 @@ export default function useAddresses() {
     updatingAddress,
   };
 }
-
-/**addresses, loading, error         (estado)
-loadAddresses()                    (trae del backend)
-addAddress(data)                   (crea)
-removeAddress(id)                  (elimina) */
