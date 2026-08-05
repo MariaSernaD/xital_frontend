@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddressManager from "../../components/organism/AddressManager/AddressManager";
+import "./Checkout.css";
 
 
 export default function Checkout() {

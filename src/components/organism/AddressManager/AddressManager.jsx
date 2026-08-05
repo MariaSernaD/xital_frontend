@@ -3,6 +3,7 @@ import useAddresses from "../../../hooks/useAddresses";
 import AddressForm from "../AddressForm/AddressForm";
 import Button from "../../atoms/Button/Button";
 import Icon from "../../atoms/Icon/Icon";
+import { Pencil } from "lucide-react";
 import "./AddressManager.css";
 
 
@@ -86,7 +87,7 @@ export default function AddressManager({
                 size="sm"
                 onClick={() => handleEdit(addr)}
               >
-                <Icon name="edit" size={16} />
+                <Pencil size={16} />
               </Button>
               <Button
                 variant="ghost"
@@ -94,7 +95,7 @@ export default function AddressManager({
                 className="address-remove"
                 onClick={() => removeAddress(addr._id)}
               >
-                <Icon name="trash" size={16} />
+                <Icon name="trash" size={10} />
               </Button>
             </div>
           </div>
