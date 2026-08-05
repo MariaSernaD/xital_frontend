@@ -5,8 +5,14 @@ import Button from "../../atoms/Button/Button";
 import Icon from "../../atoms/Icon/Icon";
 import "./AddressManager.css";
 
-export default function AddressManager({ selectable = false, selectedId, onSelect }) {
-  const { addresses, loading, addAddress, removeAddress, updatingAddress } = useAddresses();
+
+export default function AddressManager({
+  selectable = false,
+  selectedId,
+  onSelect,
+}) {
+  const { addresses, loading, addAddress, removeAddress, updatingAddress } =
+    useAddresses();
 
   const [showForm, setShowForm] = useState(false);
   const [editingAddress, setEditingAddress] = useState(null);
@@ -31,7 +37,8 @@ export default function AddressManager({ selectable = false, selectedId, onSelec
     setShowForm(true);
   };
 
-  if (loading) return <p className="address-loading">Cargando direcciones...</p>;
+  if (loading)
+    return <p className="address-loading">Cargando direcciones...</p>;
 
   return (
     <div className="address-manager">
@@ -59,16 +66,26 @@ export default function AddressManager({ selectable = false, selectedId, onSelec
             <div className="address-info">
               <div className="address-name-row">
                 <strong>{addr.name}</strong>
-                {addr.isDefault && <span className="address-default-badge">Predeterminada</span>}
+                {addr.isDefault && (
+                  <span className="address-default-badge">Predeterminada</span>
+                )}
                 <span className="address-type-badge">{addr.addressType}</span>
               </div>
               <p>{addr.address}</p>
-              <p>{addr.city}, {addr.state}, CP {addr.postalCode}</p>
-              <p>{addr.country} · Tel: {addr.phone}</p>
+              <p>
+                {addr.city}, {addr.state}, CP {addr.postalCode}
+              </p>
+              <p>
+                {addr.country} · Tel: {addr.phone}
+              </p>
             </div>
 
             <div className="address-actions">
-              <Button variant="ghost" size="sm" onClick={() => handleEdit(addr)}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => handleEdit(addr)}
+              >
                 <Icon name="edit" size={16} />
               </Button>
               <Button
@@ -83,17 +100,22 @@ export default function AddressManager({ selectable = false, selectedId, onSelec
           </div>
         ))}
       </div>
-
-      {/* Formulario (crear o editar) */}
       {showForm ? (
         <AddressForm
           initialValues={editingAddress || {}}
           isEditMode={!!editingAddress}
           onSubmit={handleFormSubmit}
-          onCancel={() => { setShowForm(false); setEditingAddress(null); }}
+          onCancel={() => {
+            setShowForm(false);
+            setEditingAddress(null);
+          }}
         />
       ) : (
-        <Button variant="primary" className="btn-add-address" onClick={handleAddNew}>
+        <Button
+          variant="primary"
+          className="btn-add-address"
+          onClick={handleAddNew}
+        >
           <Icon name="plus" size={16} /> Agregar nueva dirección
         </Button>
       )}

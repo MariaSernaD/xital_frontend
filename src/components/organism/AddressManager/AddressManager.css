@@ -1,0 +1,111 @@
+.address-manager {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.address-loading,
+.address-empty {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* ===== Cada dirección como card ===== */
+.address-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--color-card-bg);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Si es seleccionable, el cursor invita a hacer clic */
+.address-card:hover {
+  box-shadow: 0 2px 12px rgba(26, 10, 46, 0.08);
+}
+
+/* Dirección seleccionada (modo checkout) */
+.address-card.selected {
+  border-color: var(--color-dark-elegant);
+  box-shadow: 0 0 0 3px rgba(232, 197, 255, 0.35);
+}
+
+.address-card input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--color-dark-elegant);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Info de la dirección */
+.address-info {
+  flex: 1;
+}
+
+.address-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.address-name-row strong {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+}
+
+.address-info p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Badges */
+.address-default-badge {
+  padding: 2px 10px;
+  background-color: var(--color-accent-lavender);
+  color: var(--color-dark-elegant);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.address-type-badge {
+  padding: 2px 10px;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+}
+
+/* Acciones (editar / eliminar) */
+.address-actions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.address-remove:hover {
+  color: var(--color-error);
+}
+
+/* Botón agregar */
+.btn-add-address {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
