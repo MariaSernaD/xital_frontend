@@ -1,20 +1,26 @@
-import {  useState, useEffect } from "react";
-import { getAddresses, createAddress, deleteAddress, updateAddress} from "../services/addressService";
+import { useState, useEffect } from "react";
+import {
+  getAddresses,
+  createAddress,
+  deleteAddress,
+  updateAddress,
+} from "../services/addressService";
 
 export default function useAddresses() {
+  const [addresses, setAddresses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const [addresses, setAddresses] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
-    useEffect(() => { loadAddresses(); }, []);
+  useEffect(() => {
+    loadAddresses();
+  }, []);
 
   const loadAddresses = async () => {
     // Implementation for loading addresses
     try {
+      setLoading(true);
       const fetchedAddresses = await getAddresses();
       setAddresses(fetchedAddresses);
-      setLoading(true);
     } catch (error) {
       setError(error);
     } finally {
@@ -45,7 +51,7 @@ export default function useAddresses() {
   const updatingAddress = async (id, data) => {
     // cambios en el address
     try {
-       await updateAddress(id, data);
+      await updateAddress(id, data);
       await loadAddresses();
     } catch (error) {
       setError(error);
