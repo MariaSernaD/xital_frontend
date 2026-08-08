@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
+import "./PaymentMethodForm.css";
 
 export default function PaymentMethodForm({
   onSubmit,
@@ -63,7 +64,7 @@ export default function PaymentMethodForm({
             value={formData.cardNumber}
             onChange={handleChange}
             pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"
-            placeHolder="1234-5678-9012-3456"
+            placeholder="1234-5678-9012-3456"
             required
           />
           <Input
@@ -79,7 +80,7 @@ export default function PaymentMethodForm({
             name="expiryDate"
             value={formData.expiryDate}
             onChange={handleChange}
-            placeHolder="MM/YY"
+            placeholder="MM/YY"
             pattern="[0-9]{2}/[0-9]{2}"
             required
           />

@@ -1,0 +1,74 @@
+.payment-method-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-card-bg);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(26, 10, 46, 0.08);
+}
+
+.payment-method-form h3 {
+  font-family: var(--font-display, "Playfair Display", serif);
+  font-size: var(--text-xl);
+  color: var(--color-dark-elegant);
+  margin-bottom: var(--space-xs);
+}
+
+/* El select de tipo */
+.form-type-selection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-type-selection label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-type-selection select {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  background-color: var(--color-card-bg);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-type-selection select:focus {
+  outline: none;
+  border-color: var(--color-dark-elegant);
+  box-shadow: 0 0 0 3px rgba(232, 197, 255, 0.35);
+}
+
+/* Checkbox predeterminado */
+.form-payment-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.form-payment-checkbox input[type="checkbox"] {
+  accent-color: var(--color-dark-elegant);
+  cursor: pointer;
+}
+
+/* Botones */
+.form-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.btn-payment-methody {
+  flex: 1;
+}
