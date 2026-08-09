@@ -58,6 +58,14 @@ export default function PaymentMethodForm({
 
       {(formData.type === "credit_card" || formData.type === "debit_card") && (
         <>
+        <Input 
+        label="Nombre del banco"
+        name="bankName"
+        value={formData.bankName}
+        onChange={handleChange}
+        placeholder="Nombre del banco"
+        required
+        />
           <Input
             label="Número de tarjeta"
             name="cardNumber"
@@ -146,6 +154,7 @@ export default function PaymentMethodForm({
         {onCancel && (
           <Button
             type="button"
+            variant="secondary"
             className="btn btn-secondary"
             onClick={onCancel}
           >

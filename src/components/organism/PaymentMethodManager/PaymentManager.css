@@ -1,0 +1,111 @@
+.payment-manager {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.payment-loading,
+.payment-empty {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.payment-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Cada método como card */
+.payment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--color-card-bg);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.payment-item:hover {
+  box-shadow: 0 2px 12px rgba(26, 10, 46, 0.08);
+}
+
+.payment-item.selected {
+  border-color: var(--color-dark-elegant);
+  box-shadow: 0 0 0 3px rgba(232, 197, 255, 0.35);
+}
+
+.payment-item input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--color-dark-elegant);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.payment-details {
+  flex: 1;
+}
+
+.payment-type-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.payment-type {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+}
+
+/* Badges */
+.payment-default {
+  padding: 2px 10px;
+  background-color: var(--color-accent-lavender);
+  color: var(--color-dark-elegant);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.payment-type-badge {
+  padding: 2px 10px;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+}
+
+/* Número enmascarado — monoespaciado se ve más "tarjeta" */
+.payment-card-number {
+  font-family: monospace;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.payment-card-holder {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Acciones */
+.payment-actions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.payment-add-button {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
