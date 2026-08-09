@@ -63,7 +63,7 @@ export default function AddressManager({
                 type="radio"
                 name="selectedAddress"
                 checked={selectedId === addr._id}
-                onChange={() => onSelect(addr._id)}
+                onChange={() => onSelect(addr)}
               />
             )}
 

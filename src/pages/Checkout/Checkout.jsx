@@ -1,14 +1,17 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import AddressManager from "../../components/organism/AddressManager/AddressManager";
 import PaymentManager from "../../components/organism/PaymentMethodManager/PaymentManager";
 import CartView from "../../components/organism/CartView/CartView";
 import { useCart } from "../../context/cartContext";
+import {createOrder} from "../../services/orderService";
 import Loading from "../../components/atoms/Loading/Loading";
 import Button from "../../components/atoms/Button/Button";
 import "./Checkout.css";
 
 export default function Checkout() {
-  const { loading, totalPrice, cart } = useCart();
+  const { loading, totalPrice, cart, emptyCart } = useCart();
+  const navigate = useNavigate();
 
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [selectedPayment, setSelectedPayment] = useState(null);
@@ -17,12 +20,31 @@ export default function Checkout() {
     setSelectedAddress(address);
   };
   const handlePaymentMethodSelect = (paymentMethod) => {
-    setSelectedPaymentMethod(paymentMethod);
+    setSelectedPayment(paymentMethod);
   };
 
-  const handleCreateOrder = () => {
-  console.log("Crear orden:", { selectedAddress, selectedPayment, cart });
-};
+  const handleCreateOrder = async () => {
+    try {
+      const orderData = {
+        products: cart.products.map((item) => ({
+          product: item.product._id,
+          quantity: item.quantity,
+          unitPrice: item.unitPrice,
+        })),
+        address: selectedAddress._id,
+        paymentMethod : selectedPayment._id, 
+        totalPrice: grandTotal, 
+        shippingCost: shippingCost,
+      };
+
+      const newOrder = await createOrder(orderData);
+      await emptyCart();
+      navigate(`/order-confirmation/${newOrder._id}`);
+
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
+  };
 
   const subtotal = totalPrice;
   const taxAmount = subtotal * 0.16; // IVA 16%
@@ -30,9 +52,11 @@ export default function Checkout() {
   const grandTotal = subtotal + taxAmount + shippingCost;
 
   if (loading)
-      return (
-        <Loading className="checkout-loading">Cargando tu información de compra...</Loading>
-      );
+    return (
+      <Loading className="checkout-loading">
+        Cargando tu información de compra...
+      </Loading>
+    );
 
   return (
     <div className="checkout-page">
@@ -95,7 +119,7 @@ export default function Checkout() {
             disabled={
               !selectedAddress || !selectedPayment || !cart?.products?.length
             }
-            onClick={(handleCreateOrder)}
+            onClick={handleCreateOrder}
           >
             Confirmar y pagar
           </Button>

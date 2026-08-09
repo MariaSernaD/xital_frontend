@@ -65,7 +65,7 @@ export default function PaymentManager({
                 type="radio"
                 name="payment-method"
                 checked={selectedId === payment._id}
-                onChange={() => onSelect && onSelect(payment._id)}
+                onChange={() => onSelect && onSelect(payment)}
               />
             )}
             <div className="payment-details">
