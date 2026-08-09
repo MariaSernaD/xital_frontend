@@ -40,8 +40,8 @@
   gap: var(--space-sm);
 }
 
-.cart-view-details h3 {
-  font-size: var(--text-base);
+.cart-view-details h4 {
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -126,7 +126,7 @@
 }
 
 .line-total {
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
   font-weight: 700;
   color: var(--color-dark-elegant);
 }

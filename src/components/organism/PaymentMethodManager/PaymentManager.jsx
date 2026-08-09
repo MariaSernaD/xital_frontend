@@ -58,7 +58,7 @@ export default function PaymentManager({
           <div
             key={payment._id}
             className={`payment-item ${selectedId === payment._id ? "selected" : ""}`}
-            onClick={selectable ? () => onSelect(payment._id) : undefined}
+            onClick={selectable ? () => onSelect(payment) : undefined}
           >
             {selectable && (
               <input

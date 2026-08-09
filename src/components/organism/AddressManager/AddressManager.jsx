@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAddresses from "../../../hooks/useAddresses";
 import AddressForm from "../AddressForm/AddressForm";
+import Loading from "../../atoms/Loading/Loading";
 import Button from "../../atoms/Button/Button";
 import Icon from "../../atoms/Icon/Icon";
 import { Pencil } from "lucide-react";
@@ -38,8 +39,10 @@ export default function AddressManager({
     setShowForm(true);
   };
 
-  if (loading)
-    return <p className="address-loading">Cargando direcciones...</p>;
+    if (loading)
+      return (
+        <Loading className="address-loading">Cargando direcciones...</Loading>
+      );
 
   return (
     <div className="address-manager">
@@ -53,7 +56,7 @@ export default function AddressManager({
           <div
             key={addr._id}
             className={`address-card ${selectable && selectedId === addr._id ? "selected" : ""}`}
-            onClick={selectable ? () => onSelect(addr._id) : undefined}
+            onClick={selectable ? () => onSelect(addr) : undefined}
           >
             {selectable && (
               <input

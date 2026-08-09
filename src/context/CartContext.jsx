@@ -114,11 +114,3 @@ export function useCart() {
   return context;
 }
 
-/**
- * 
-loadCart — llama a getCartByUser
-addToCart — llama a addProductToCart
-updateQuantity — llama a updateCart
-removeProduct — llama a deleteProductFromCart
-emptyCart — llama a clearCart
- */

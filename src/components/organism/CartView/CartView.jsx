@@ -10,7 +10,6 @@ export default function CartView() {
     <div className="cart-view-container">
       {cart?.products?.map(({ product, quantity }) => (
         <div className="cart-view-products" key={product._id}>
-          {/* Columna 1: imagen */}
           <div className="cart-view-image">
             <img
               src={"/imagenes/xital.png"}
@@ -18,17 +17,13 @@ export default function CartView() {
               loading="lazy"
             />
           </div>
-
-          {/* Columna 2: info + acciones */}
           <div className="cart-view-details">
-            <h3>{product.name}</h3>
+            <h4>{product.name}</h4>
             <div className="cart-view-tags">
               <span>{product.category?.name}</span>
               <span>{product.fungus}</span>
               <span>{product.volume}</span>
             </div>
-
-            {/* acciones: cantidad + eliminar juntas abajo */}
             <div className="cart-view-actions">
               <div className="multiple-button">
                 <Button
@@ -67,8 +62,6 @@ export default function CartView() {
               </Button>
             </div>
           </div>
-
-          {/* Columna 3: precios */}
           <div className="cart-view-prices">
             <p className="unit-price">${product.unitPrice.toFixed(2)}</p>
             <p className="line-total">
