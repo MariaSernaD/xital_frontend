@@ -1,0 +1,181 @@
+.order-confirmation {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-xl);
+  background-color: var(--color-bg-light);
+  min-height: calc(100vh - 120px);
+}
+
+.order-confirmation-content {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2xl) var(--space-xl);
+  background-color: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(26, 10, 46, 0.08);
+}
+
+/* Icono de éxito en círculo verde suave */
+.confirmation-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--space-md);
+  background-color: rgba(76, 175, 80, 0.12);
+  border-radius: var(--radius-full);
+}
+
+.order-confirmation-title {
+  font-family: var(--font-display, "Playfair Display", serif);
+  font-size: var(--text-2xl);
+  color: var(--color-dark-elegant);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.confirmation-message {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-xl);
+}
+
+.confirmation-message strong {
+  color: var(--color-dark-elegant);
+}
+
+/* Bloque de detalles */
+.confirmation-details {
+  width: 100%;
+  padding: var(--space-lg);
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+}
+
+.confirmation-details h2 {
+  font-family: var(--font-display, "Playfair Display", serif);
+  font-size: var(--text-lg);
+  color: var(--color-dark-elegant);
+  margin-bottom: var(--space-md);
+}
+
+.confirmation-details h3 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+
+.order-info > p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Lista de productos */
+.order-products {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.order-product {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Líneas de resumen (reusa el estilo del checkout) */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-md);
+  margin-top: var(--space-xs);
+  border-top: 1px solid #ddd;
+  font-family: var(--font-display, "Playfair Display", serif);
+  font-size: var(--text-xl);
+  color: var(--color-dark-elegant);
+}
+
+.delivery-estimate {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-md);
+}
+
+.address-info {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid #ddd;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.address-info strong {
+  color: var(--text-primary);
+}
+
+.confirmation-note {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Botones de acción */
+.confirmation-actions {
+  display: flex;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.confirmation-actions .button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.confirmation-actions .button.primary {
+  background-color: var(--color-dark-elegant);
+  color: #fff;
+}
+
+.confirmation-actions .button.primary:hover {
+  background-color: #2c1742;
+}
+
+.confirmation-actions .button.secondary {
+  background-color: var(--color-accent-lavender);
+  color: var(--color-dark-elegant);
+}
+
+.order-error {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-error);
+  font-size: var(--text-base);
+}

@@ -9,6 +9,7 @@ import { AuthProvider } from "../../context/AuthContext";
 import { CartProvider } from "../../context/cartContext";
 import Cart from "../../pages/Cart";
 import Checkout  from "../../pages/Checkout/Checkout";
+import OrderConfirmation from "../../pages/OrderConfirmation";
 import ProtectedRoute from "../../pages/ProtectedRoute";
 
 export default function App() {
@@ -23,8 +24,34 @@ export default function App() {
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/:productId" element={<Product />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/cart" element={<ProtectedRoute> <Cart /> </ProtectedRoute>}/>
-              <Route path="/checkout" element={<ProtectedRoute> <Checkout /> </ProtectedRoute>}/>
+              <Route
+                path="/cart"
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <Cart />{" "}
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <Checkout />{" "}
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/order-confirmation/:id"
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <OrderConfirmation />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<div>Ruta no encontrada</div>} />
             </Routes>
           </Layout>
         </CartProvider>

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddressManager from "../../components/organism/AddressManager/AddressManager";
 import PaymentManager from "../../components/organism/PaymentMethodManager/PaymentManager";
 import CartView from "../../components/organism/CartView/CartView";
 import { useCart } from "../../context/cartContext";
-import {createOrder} from "../../services/orderService";
+import { createOrder } from "../../services/orderService";
 import Loading from "../../components/atoms/Loading/Loading";
 import Button from "../../components/atoms/Button/Button";
 import "./Checkout.css";
@@ -23,6 +23,12 @@ export default function Checkout() {
     setSelectedPayment(paymentMethod);
   };
 
+  const productsTotal = totalPrice; // 1810 — precio real, IVA incluido
+  const ivaIncluido = productsTotal - productsTotal / 1.16; // cuánto IVA ya está dentro (desglose)
+  const subtotalSinIva = productsTotal / 1.16; // el precio sin IVA (informativo)
+  const shippingCost = productsTotal >= 2000 ? 0 : 200; // el umbral se evalúa sobre el precio real
+  const grandTotal = productsTotal + shippingCost; // productos + envío (NO sumas IVA)
+
   const handleCreateOrder = async () => {
     try {
       const orderData = {
@@ -32,24 +38,18 @@ export default function Checkout() {
           unitPrice: item.unitPrice,
         })),
         address: selectedAddress._id,
-        paymentMethod : selectedPayment._id, 
-        totalPrice: grandTotal, 
+        paymentMethod: selectedPayment._id,
+        totalPrice: productsTotal,
         shippingCost: shippingCost,
       };
 
       const newOrder = await createOrder(orderData);
       await emptyCart();
       navigate(`/order-confirmation/${newOrder._id}`);
-
     } catch (error) {
       console.error("Error creating order:", error);
     }
   };
-
-  const subtotal = totalPrice;
-  const taxAmount = subtotal * 0.16; // IVA 16%
-  const shippingCost = subtotal >= 2000 ? 0 : 200; // gratis arriba de $2000 (promo del carousel)
-  const grandTotal = subtotal + taxAmount + shippingCost;
 
   if (loading)
     return (
@@ -90,12 +90,12 @@ export default function Checkout() {
         <aside className="checkout-summary">
           <h3>Resumen de la orden</h3>
           <div className="summary-line">
-            <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>Subtotal (sin IVA)</span>
+            <span>${subtotalSinIva.toFixed(2)}</span>
           </div>
           <div className="summary-line">
-            <span>IVA (16%)</span>
-            <span>${taxAmount.toFixed(2)}</span>
+            <span>IVA incluido (16%)</span>
+            <span>${ivaIncluido.toFixed(2)}</span>
           </div>
           <div className="summary-line">
             <span>Envío</span>
