@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AddressManager from "../../components/organism/AddressManager/AddressManager";
 import PaymentManager from "../../components/organism/PaymentMethodManager/PaymentManager";
 import CartView from "../../components/organism/CartView/CartView";
-import { useCart } from "../../context/cartContext";
+import { useCart } from "../../context/CartContext";
 import { createOrder } from "../../services/orderService";
 import Loading from "../../components/atoms/Loading/Loading";
 import Button from "../../components/atoms/Button/Button";

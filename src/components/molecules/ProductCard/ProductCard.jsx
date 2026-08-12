@@ -3,7 +3,7 @@ import Button from "../../atoms/Button/Button";
 import Badge from "../../atoms/Badge/Bagde";
 import { ShoppingCart, Star } from "lucide-react";
 import "./ProductCard.css";
-import { useCart } from "../../../context/cartContext";
+import { useCart } from "../../../context/CartContext";
 import { useAuth } from "../../../context/AuthContext";
 
 export default function ProductCard({ product }) {

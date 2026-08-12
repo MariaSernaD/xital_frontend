@@ -6,7 +6,7 @@ import Login from "../../pages/Login";
 import Layout from "../../layout/Layout";
 import Register from "../../pages/Register";
 import { AuthProvider } from "../../context/AuthContext";
-import { CartProvider } from "../../context/cartContext";
+import { CartProvider } from "../../context/CartContext";
 import Cart from "../../pages/Cart";
 import Checkout  from "../../pages/Checkout/Checkout";
 import OrderConfirmation from "../../pages/OrderConfirmation";

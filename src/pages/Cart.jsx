@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import Button from "../components/atoms/Button/Button";
 import Icon from "../components/atoms/Icon/Icon";
 import { MousePointerClick } from "lucide-react";

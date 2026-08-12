@@ -14,7 +14,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import Button from "../../atoms/Button/Button";
-import { useCart } from "../../../context/cartContext";
+import { useCart } from "../../../context/CartContext";
 import { useAuth } from "../../../context/AuthContext";
 import "./ProductDetails.css";
 

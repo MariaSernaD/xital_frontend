@@ -4,7 +4,7 @@ import Icon from "../../components/atoms/Icon/Icon";
 import { Link } from "react-router-dom";
 import logo from "/Xital_logo.png";
 import AccountDropdown from "../../components/molecules/AccountDropdown/AccountDropdown";
-import { useCart } from "../../context/cartContext";
+import { useCart } from "../../context/CartContext";
 
 import "./Header.css";
 
