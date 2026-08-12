@@ -37,7 +37,7 @@ export default function OrderConfirmation() {
     return (
       <div className="order-confirmation">
         <p className="order-error">
-          No pudimos cargar tu orden. Revisa "Mis pedidos" o intenta más tarde.
+          No pudimos cargar tu orden. Intenta de nuevo más tarde.
         </p>
       </div>
     );
@@ -134,8 +134,7 @@ const grandTotal = productsTotal + shippingCost;     // productos + envío = lo 
           </div>
 
           <p className="confirmation-note">
-            Puedes ver el estado de tu pedido en cualquier momento desde tu
-            perfil.
+            Guarda el número de tu pedido para cualquier consulta.
           </p>
         </div>
 
@@ -143,10 +142,6 @@ const grandTotal = productsTotal + shippingCost;     // productos + envío = lo 
           <Link to="/" className="button primary">
             <Icon name="home" size={20} />
             <span>Volver al inicio</span>
-          </Link>
-          <Link to="/orders" className="button secondary">
-            <Icon name="package" size={20} />
-            <span>Ver mis pedidos</span>
           </Link>
         </div>
       </div>
