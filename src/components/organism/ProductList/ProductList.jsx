@@ -80,7 +80,7 @@ export default function ProductList() {
       {/*Rigth column: products */}
       <div className="products-column">
         {loading ? (
-          <Loading message="Cargando productos..." />
+          <Loading>Cargando productos...</Loading>
         ) : (
           <div className="product-grid">
             {products.slice(0, 4).map((product) => (

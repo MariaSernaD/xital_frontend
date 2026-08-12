@@ -25,7 +25,7 @@ export default function ProductsCatalog() {
     loadProducts();
   }, []);
 
-  if (loading) return <Loading message="Cargando catálogo completo" />;
+  if (loading) return <Loading>Cargando catálogo completo</Loading>;
 
   return (
     <div className="products-page-container">
