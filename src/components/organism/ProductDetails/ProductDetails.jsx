@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductById } from "../../../services/productsService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import Badge from "../../atoms/Badge/Bagde";
 import ProductImageGallery from "../../molecules/ProductImageGallery/ProductImageGallery";
