@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { login as loginService } from "../services/authService";
+import { logEvent } from "../services/logService";
 import {
   getToken,
   saveToken,
@@ -15,23 +16,29 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = getToken();
-    if (!token) {
-      setLoading(false);
-      return;
-    }
+    try {
+      const token = getToken();
+      if (!token) {
+        return;
+      }
 
-    if (isTokenExpired(token)) {
-      clearToken();
-      setLoading(false);
-      return;
-    }
+      if (isTokenExpired(token)) {
+        clearToken();
+        return;
+      }
 
-    const payload = decodeToken(token);
-    if (payload) {
-      setUser({ id: payload.userId, name: payload.name, role: payload.role });
+      const payload = decodeToken(token);
+      if (payload) {
+        setUser({ id: payload.userId, name: payload.name, role: payload.role });
+      }
+    } catch (error) {
+      //localStorage puede no estar disponible (modo privado, permisos del
+      //navegador): la app arranca sin sesión en vez de reventar al montar.
+      setUser(null);
+      logEvent("error", "auth_session_restore_failed", error?.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   useEffect(() => {

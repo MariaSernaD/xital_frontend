@@ -5,6 +5,7 @@ import {
   deleteAddress,
   updateAddress,
 } from "../services/addressService";
+import { logEvent } from "../services/logService";
 
 export default function useAddresses() {
   const [addresses, setAddresses] = useState([]);
@@ -23,6 +24,10 @@ export default function useAddresses() {
       setAddresses(fetchedAddresses);
     } catch (error) {
       setError(error);
+      logEvent("error", "load_addresses_failed", error.kind, {
+        kind: error.kind,
+        status: error.status,
+      });
     } finally {
       setLoading(false);
     }

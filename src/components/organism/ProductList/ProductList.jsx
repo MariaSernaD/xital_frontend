@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import ProductCard from "../../molecules/ProductCard/ProductCard";
 import Loading from "../../atoms/Loading/Loading";
 import Button from "../../atoms/Button/Button";
+import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import { getAllProducts } from "../../../services/productsService";
+import { logEvent } from "../../../services/logService";
 import { FlaskConical, MousePointerClick } from "lucide-react";
 import "./ProductList.css";
 
@@ -23,6 +25,11 @@ export default function ProductList() {
         setProducts(data);
       } catch (err) {
         setError(err.kind || "UNKNOWN");
+        logEvent("error", "load_products_failed", err.kind, {
+          kind: err.kind,
+          status: err.status,
+          component: "ProductList",
+        });
       } finally {
         setLoading(false);
       }
@@ -81,6 +88,17 @@ export default function ProductList() {
       <div className="products-column">
         {loading ? (
           <Loading>Cargando productos...</Loading>
+        ) : error ? (
+          <ErrorMessage message={error}>
+            {error === "NETWORK_ERROR" || error === "TIMEOUT" ? (
+              <p>
+                No pudimos conectar con el servidor. Revisa tu conexión a
+                internet.
+              </p>
+            ) : (
+              <p>No pudimos cargar las tinturas. Intenta más tarde.</p>
+            )}
+          </ErrorMessage>
         ) : (
           <div className="product-grid">
             {products.slice(0, 4).map((product) => (

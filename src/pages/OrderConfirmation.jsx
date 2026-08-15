@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getOrderById } from "../services/orderService";
+import { logEvent } from "../services/logService";
 import Icon from "../components/atoms/Icon/Icon";
 import Loading from "../components/atoms/Loading/Loading";
 import "./OrderConfirmation.css";
@@ -19,6 +20,11 @@ export default function OrderConfirmation() {
         setOrder(orderData);
       } catch (error) {
         setError(error.kind ?? "UNKNOWN");
+        logEvent("error", "load_order_failed", error.kind, {
+          kind: error.kind,
+          status: error.status,
+          orderId: id,
+        });
       } finally {
         setLoading(false);
       }

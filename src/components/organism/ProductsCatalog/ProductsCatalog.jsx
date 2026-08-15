@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../../services/productsService";
+import { logEvent } from "../../../services/logService";
 import Loading from "../../atoms/Loading/Loading";
+import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import ProductCard from "../../molecules/ProductCard/ProductCard";
 import "./ProductsCatalog.css"
 
@@ -18,6 +20,11 @@ export default function ProductsCatalog() {
         setProducts(data);
       } catch (error) {
         setError(error.kind || "UNKNOWN");
+        logEvent("error", "load_products_failed", error.kind, {
+          kind: error.kind,
+          status: error.status,
+          component: "ProductsCatalog",
+        });
       } finally {
         setLoading(false);
       }
@@ -26,6 +33,22 @@ export default function ProductsCatalog() {
   }, []);
 
   if (loading) return <Loading>Cargando catálogo completo</Loading>;
+
+  if (error) {
+    return (
+      <div className="products-page-container">
+        <ErrorMessage message={error}>
+          {error === "NETWORK_ERROR" || error === "TIMEOUT" ? (
+            <p>
+              No pudimos conectar con el servidor. Revisa tu conexión a internet.
+            </p>
+          ) : (
+            <p>No pudimos cargar el catálogo. Intenta más tarde.</p>
+          )}
+        </ErrorMessage>
+      </div>
+    );
+  }
 
   return (
     <div className="products-page-container">

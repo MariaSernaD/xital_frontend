@@ -11,51 +11,56 @@ import Cart from "../../pages/Cart";
 import Checkout  from "../../pages/Checkout/Checkout";
 import OrderConfirmation from "../../pages/OrderConfirmation";
 import ProtectedRoute from "../../pages/ProtectedRoute";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { GlobalFallback } from "../ErrorBoundary/ErrorFallbacks";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <CartProvider>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/products/:productId" element={<Product />} />
-              <Route path="/register" element={<Register />} />
-              <Route
-                path="/cart"
-                element={
-                  <ProtectedRoute>
-                    {" "}
-                    <Cart />{" "}
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/checkout"
-                element={
-                  <ProtectedRoute>
-                    {" "}
-                    <Checkout />{" "}
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/order-confirmation/:id"
-                element={
-                  <ProtectedRoute>
-                    {" "}
-                    <OrderConfirmation />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="*" element={<div>Ruta no encontrada</div>} />
-            </Routes>
-          </Layout>
-        </CartProvider>
-      </AuthProvider>
+      {/* Dentro del router para que el fallback pueda usar <Link> */}
+      <ErrorBoundary name="global" fallback={<GlobalFallback />}>
+        <AuthProvider>
+          <CartProvider>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:productId" element={<Product />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                  path="/cart"
+                  element={
+                    <ProtectedRoute>
+                      {" "}
+                      <Cart />{" "}
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/checkout"
+                  element={
+                    <ProtectedRoute>
+                      {" "}
+                      <Checkout />{" "}
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/order-confirmation/:id"
+                  element={
+                    <ProtectedRoute>
+                      {" "}
+                      <OrderConfirmation />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="*" element={<div>Ruta no encontrada</div>} />
+              </Routes>
+            </Layout>
+          </CartProvider>
+        </AuthProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

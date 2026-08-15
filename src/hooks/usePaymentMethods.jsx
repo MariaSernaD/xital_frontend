@@ -5,6 +5,7 @@ import {
   deletePaymentMethod,
   updatePaymentMethod,
 } from "../services/paymentMethodService";
+import { logEvent } from "../services/logService";
 
 export default function usePaymentMethods() {
   const [paymentMethods, setPaymentMethods] = useState([]);
@@ -23,6 +24,10 @@ export default function usePaymentMethods() {
       setPaymentMethods(fetchedPaymentMethods);
     } catch (error) {
       setError(error);
+      logEvent("error", "load_payment_methods_failed", error.kind, {
+        kind: error.kind,
+        status: error.status,
+      });
     } finally {
       setLoading(false);
     }

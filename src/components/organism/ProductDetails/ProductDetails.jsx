@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductById } from "../../../services/productsService";
+import { logEvent } from "../../../services/logService";
 import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import Badge from "../../atoms/Badge/Bagde";
@@ -44,6 +45,11 @@ export default function ProductDetails({ productId }) {
           return;
         }
         setError(err.kind || "UNKNOWN");
+        logEvent("error", "load_product_failed", err.kind, {
+          kind: err.kind,
+          status: err.status,
+          productId,
+        });
       } finally {
         setLoading(false);
       }

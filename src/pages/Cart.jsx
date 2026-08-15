@@ -4,6 +4,8 @@ import Button from "../components/atoms/Button/Button";
 import Icon from "../components/atoms/Icon/Icon";
 import { MousePointerClick } from "lucide-react";
 import CartView from "../components/organism/CartView/CartView";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import { CartFallback } from "../components/ErrorBoundary/ErrorFallbacks";
 import "./Cart.css";
 
 export default function Cart() {
@@ -42,7 +44,10 @@ export default function Cart() {
       <div className="cart-layout">
         {/* Columna izquierda: los productos */}
         <div className="cart-list-column">
-          <CartView />
+          {/* El resumen lateral sigue vivo aunque la lista falle */}
+          <ErrorBoundary name="cart" fallback={<CartFallback />}>
+            <CartView />
+          </ErrorBoundary>
         </div>
 
         {/* Columna derecha: resumen sticky */}

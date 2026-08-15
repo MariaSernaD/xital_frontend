@@ -7,6 +7,7 @@ import {
   getCartByUser,
   updateCart,
 } from "../services/cartService";
+import { logEvent } from "../services/logService";
 
 const CartContext = createContext();
 
@@ -35,6 +36,10 @@ export function CartProvider({ children }) {
         if (cancelled) return;
         if (error.kind !== "NOT FOUND") {
           setError(error.kind ?? "SERVER_ERROR");
+          logEvent("error", "load_cart_failed", error.kind, {
+            kind: error.kind,
+            status: error.status,
+          });
         }
       }
     })();
@@ -50,6 +55,7 @@ export function CartProvider({ children }) {
       setCart({ products: [] });
     } catch (error) {
       setError(error.kind ?? "SERVER_ERROR");
+      logEvent("error", "clear_cart_failed", error.kind, { kind: error.kind });
     }
   };
 
@@ -60,6 +66,11 @@ export function CartProvider({ children }) {
       setCart(addingProduct);
     } catch (error) {
       setError(error.kind ?? "SERVER_ERROR");
+      logEvent("error", "add_to_cart_failed", error.kind, {
+        kind: error.kind,
+        productId,
+        quantity,
+      });
     }
   };
 
@@ -70,6 +81,11 @@ export function CartProvider({ children }) {
       setCart(updatingQuantity);
     } catch (error) {
       setError(error.kind ?? "SERVER_ERROR");
+      logEvent("error", "update_cart_failed", error.kind, {
+        kind: error.kind,
+        productId,
+        quantity,
+      });
     }
   };
 
@@ -80,6 +96,10 @@ export function CartProvider({ children }) {
       setCart(removingProduct);
     } catch (error) {
       setError(error.kind ?? "SERVER_ERROR");
+      logEvent("error", "remove_from_cart_failed", error.kind, {
+        kind: error.kind,
+        productId,
+      });
     }
   };
 
