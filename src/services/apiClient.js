@@ -1,8 +1,16 @@
 import axios from "axios";
 import { getToken } from "../utils/auth";
 
+//Incluye el /api: la variable es la base completa, así no hay que concatenar ni arriesgar /api/api.
+const API_URL = import.meta.env.VITE_API_URL;
+
+//Sin fallback a propósito: una URL de reserva escondería una configuración incorrecta.
+if (!API_URL) {
+  throw new Error("Falta configurar VITE_API_URL. Revisa .env.example");
+}
+
 const apiClient = axios.create({
-  baseURL: "http://localhost:4000/api",
+  baseURL: API_URL,
   timeout: 10000,
   headers: { "Content-Type": "application/json" },
 });
