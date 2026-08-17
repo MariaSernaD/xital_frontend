@@ -145,7 +145,8 @@ Los componentes se organizan en tres niveles, cada uno en su carpeta junto a su 
   `CartView`, `LoginForm`, `AddressManager`, `PaymentMethodManager`.
 
 Las páginas de `pages/` componen organismos y resuelven el enrutamiento; el layout común
-(`Header`, `Footer`) envuelve todas las rutas.
+(`Header`) envuelve todas las rutas. `Footer.jsx` existe pero está vacío y `Layout` no lo
+renderiza.
 
 ### Capa de datos
 
@@ -215,7 +216,7 @@ veces, con un fallback distinto según lo que esté en juego:
 | Boundary | Dónde | Qué dice el fallback |
 |---|---|---|
 | `global` | `App.jsx`, dentro del router | Ofrece recargar la página |
-| `catalog` | `Home`, `ProductsPage` | Header y footer siguen vivos, link al inicio |
+| `catalog` | `Home`, `ProductsPage` | El header sigue vivo, link al inicio |
 | `cart` | `Cart` | **"Tus productos siguen guardados"** |
 | `checkout` | `Checkout` | **"Tu compra no se cobró"** |
 
